@@ -1,269 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nunya | Game Developer Portfolio</title>
-  <meta name="description" content="Portfolio of Nunya — game developer specializing in Unity, AI, and gameplay systems." />
-  <meta property="og:title" content="Nunya | Game Developer" />
-  <meta property="og:description" content="Projects, process write‑ups, code links, and contact." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://picsum.photos/1200/630" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%2300cc88' d='M32 4l26 15v26L32 60 6 45V19z'/%3E%3Cpath fill='white' d='M21 40V24l11-6 11 6v16l-11 6z'/%3E%3C/svg%3E" />
-  <style>
-    :root{
-      --bg: #0b0f14; --bg2: #0f151c; --text: #e8eef7; --muted:#9fb3c8; --acc:#6ae3b5; --acc2:#7aa2ff; --card:#0e141b; --border:#1b2430;
-    }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f7fbff; --bg2:#ffffff; --text:#0b0f14; --muted:#415367; --acc:#0db57e; --acc2:#2a6cff; --card:#ffffff; --border:#dfe7f1; }
-      body{ background: linear-gradient(180deg,#f2f7ff 0,#fff 100%) fixed; }
-    }
-    *{ box-sizing:border-box }
-    html{ scroll-behavior:smooth }
-    body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background: radial-gradient(1200px 600px at 80% -10%, #16202b 0%, transparent 60%), radial-gradient(800px 400px at -10% 0%, #111a22 0%, transparent 60%), var(--bg);
-      color:var(--text); line-height:1.6 }
-    a{ color:var(--acc2); text-decoration:none }
-    a:hover{ text-decoration:underline }
-    .container{ width:min(1100px, 92vw); margin-inline:auto; }
-    header{ position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px); background:color-mix(in oklab, var(--bg2) 88%, transparent); border-bottom:1px solid var(--border); z-index:10 }
-    nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0 }
-    .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px }
-    .brand .dot{ width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--acc),var(--acc2)) }
-    .navlinks{ display:flex; gap:24px; align-items:center }
-    .navlinks a{ color:var(--muted) }
-    .btn{ display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); background:linear-gradient(180deg, color-mix(in oklab, var(--card) 70%, transparent), color-mix(in oklab, var(--card) 100%, black 2%)); padding:10px 14px; border-radius:12px; color:var(--text); text-decoration:none; box-shadow: 0 1px 0 #0002 inset, 0 1px 10px #0003; transition: transform .08s ease, border-color .2s ease }
-    .btn:hover{ transform:translateY(-1px); border-color:color-mix(in oklab, var(--acc2) 40%, var(--border)) }
-    .btn.primary{ border-color:color-mix(in oklab, var(--acc) 40%, var(--border)); background: linear-gradient(180deg, color-mix(in oklab, var(--acc) 18%, var(--card)), color-mix(in oklab, var(--card) 100%, black 2%)); }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Matt Walsh | Game Developer Portfolio</title>
+    <meta name="description" content="Portfolio" />
+    <meta property="og:title" content="Matt Walsh | Game Developer" />
+    <meta property="og:description" content="Projects, process write‑ups, code links, and contact." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://picsum.photos/1200/630" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%2300cc88' d='M32 4l26 15v26L32 60 6 45V19z'/%3E%3Cpath fill='white' d='M21 40V24l11-6 11 6v16l-11 6z'/%3E%3C/svg%3E" />
+    <style>
+        :root {
+            --bg: #0b0f14;
+            --bg2: #0f151c;
+            --text: #e8eef7;
+            --muted: #9fb3c8;
+            --acc: #6ae3b5;
+            --acc2: #7aa2ff;
+            --card: #0e141b;
+            --border: #1b2430;
+        }
 
-    .hero{ padding:64px 0 32px; display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center }
-    .hero h1{ font-size: clamp(32px, 4vw + 8px, 52px); line-height:1.2; margin:0 0 12px }
-    .accent{ background:linear-gradient(135deg, var(--acc2), var(--acc)); -webkit-background-clip:text; background-clip:text; color:transparent }
-    .tag{ display:inline-flex; align-items:center; gap:8px; font-size:14px; color:var(--muted); border:1px dashed var(--border); padding:6px 10px; border-radius:999px }
-    .hero .art{ aspect-ratio: 4 / 3; border-radius:20px; background: radial-gradient(140px 120px at 70% 30%, color-mix(in oklab, var(--acc2) 25%, transparent), transparent 60%), radial-gradient(180px 140px at 30% 70%, color-mix(in oklab, var(--acc) 25%, transparent), transparent 60%), url('https://picsum.photos/960/720?blur=1') center/cover no-repeat; border:1px solid var(--border); box-shadow: 0 20px 80px #0006 }
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f7fbff;
+                --bg2: #ffffff;
+                --text: #0b0f14;
+                --muted: #415367;
+                --acc: #0db57e;
+                --acc2: #2a6cff;
+                --card: #ffffff;
+                --border: #dfe7f1;
+            }
 
-    section{ padding:48px 0 }
-    .section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom:18px }
-    h2{ font-size: clamp(22px, 2.2vw + 6px, 32px); margin:0 }
-    p.lead{ color:var(--muted); max-width: 70ch }
+            body {
+                background: linear-gradient(180deg,#f2f7ff 0,#fff 100%) fixed;
+            }
+        }
 
-    .about{ display:grid; grid-template-columns: .8fr 1.2fr; gap:28px }
-    .card{ background:linear-gradient(180deg, color-mix(in oklab, var(--card) 98%, black 0%), color-mix(in oklab, var(--card) 100%, black 3%)); border:1px solid var(--border); border-radius:16px; padding:18px; box-shadow: 0 10px 30px #0005 }
-    .stack{ display:flex; flex-wrap:wrap; gap:10px }
-    .chip{ font-size:13px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:color-mix(in oklab, var(--card) 80%, transparent) }
+        * {
+            box-sizing: border-box
+        }
 
-    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:16px }
-    .project{ grid-column: span 12; display:grid; grid-template-columns: 1fr 1.3fr; gap:16px; align-items:stretch }
-    .media{ position:relative; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#000 }
-    .media img, .media iframe{ width:100%; height:100%; object-fit:cover; display:block }
-    .badge{ position:absolute; top:10px; left:10px; font-size:12px; background:color-mix(in oklab, var(--bg2) 80%, transparent); border:1px solid var(--border); padding:4px 8px; border-radius:999px }
-    .proj-body{ display:flex; flex-direction:column; gap:12px }
-    .proj-title{ font-weight:700; font-size:20px; margin:0 }
-    .meta{ color:var(--muted); font-size:14px }
-    .links{ display:flex; flex-wrap:wrap; gap:10px }
+        html {
+            scroll-behavior: smooth
+        }
 
-    .contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px }
-    form{ display:grid; gap:10px }
-    input, textarea{ background:transparent; color:var(--text); border:1px solid var(--border); border-radius:10px; padding:10px 12px; font:inherit }
-    textarea{ min-height:120px; resize:vertical }
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+            background: radial-gradient(1200px 600px at 80% -10%, #16202b 0%, transparent 60%), radial-gradient(800px 400px at -10% 0%, #111a22 0%, transparent 60%), var(--bg);
+            color: var(--text);
+            line-height: 1.6
+        }
 
-    footer{ border-top:1px solid var(--border); padding:28px 0; color:var(--muted) }
+        a {
+            color: var(--acc2);
+            text-decoration: none
+        }
 
-    /* Responsive */
-    @media (max-width: 920px){ .hero{ grid-template-columns: 1fr; } .about{ grid-template-columns: 1fr } .project{ grid-template-columns:1fr } .contact-grid{ grid-template-columns:1fr } }
-  </style>
+            a:hover {
+                text-decoration: underline
+            }
+
+        .container {
+            width: min(1100px, 92vw);
+            margin-inline: auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: saturate(140%) blur(10px);
+            background: color-mix(in oklab, var(--bg2) 88%, transparent);
+            border-bottom: 1px solid var(--border);
+            z-index: 10
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 0
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: .3px
+        }
+
+            .brand .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: linear-gradient(135deg,var(--acc),var(--acc2))
+            }
+
+        .navlinks {
+            display: flex;
+            gap: 24px;
+            align-items: center
+        }
+
+            .navlinks a {
+                color: var(--muted)
+            }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, color-mix(in oklab, var(--card) 70%, transparent), color-mix(in oklab, var(--card) 100%, black 2%));
+            padding: 10px 14px;
+            border-radius: 12px;
+            color: var(--text);
+            text-decoration: none;
+            box-shadow: 0 1px 0 #0002 inset, 0 1px 10px #0003;
+            transition: transform .08s ease, border-color .2s ease
+        }
+
+            .btn:hover {
+                transform: translateY(-1px);
+                border-color: color-mix(in oklab, var(--acc2) 40%, var(--border))
+            }
+
+            .btn.primary {
+                border-color: color-mix(in oklab, var(--acc) 40%, var(--border));
+                background: linear-gradient(180deg, color-mix(in oklab, var(--acc) 18%, var(--card)), color-mix(in oklab, var(--card) 100%, black 2%));
+            }
+
+        .hero {
+            padding: 64px 0 32px;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 32px;
+            align-items: center
+        }
+
+            .hero h1 {
+                font-size: clamp(32px, 4vw + 8px, 52px);
+                line-height: 1.2;
+                margin: 0 0 12px
+            }
+
+        .accent {
+            background: linear-gradient(135deg, var(--acc2), var(--acc));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--muted);
+            border: 1px dashed var(--border);
+            padding: 6px 10px;
+            border-radius: 999px
+        }
+
+        .hero .art {
+            aspect-ratio: 4 / 3;
+            border-radius: 20px;
+            background: radial-gradient(140px 120px at 70% 30%, color-mix(in oklab, var(--acc2) 25%, transparent), transparent 60%), radial-gradient(180px 140px at 30% 70%, color-mix(in oklab, var(--acc) 25%, transparent), transparent 60%), url('https://picsum.photos/960/720?blur=1') center/cover no-repeat;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 80px #0006
+        }
+
+        section {
+            padding: 48px 0
+        }
+
+        .section-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px
+        }
+
+        h2 {
+            font-size: clamp(22px, 2.2vw + 6px, 32px);
+            margin: 0
+        }
+
+        p.lead {
+            color: var(--muted);
+            max-width: 70ch
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 28px
+        }
+
+        .card {
+            background: linear-gradient(180deg, color-mix(in oklab, var(--card) 98%, black 0%), color-mix(in oklab, var(--card) 100%, black 3%));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 10px 30px #0005
+        }
+
+        .stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+
+        .chip {
+            font-size: 13px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: color-mix(in oklab, var(--card) 80%, transparent)
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px
+        }
+
+        .project {
+            grid-column: span 12;
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 16px;
+            align-items: stretch
+        }
+
+        .media {
+            position: relative;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            background: #000
+        }
+
+            .media img, .media iframe {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block
+            }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 12px;
+            background: color-mix(in oklab, var(--bg2) 80%, transparent);
+            border: 1px solid var(--border);
+            padding: 4px 8px;
+            border-radius: 999px
+        }
+
+        .proj-body {
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .proj-title {
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0
+        }
+
+        .meta {
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        form {
+            display: grid;
+            gap: 10px
+        }
+
+        input, textarea {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font: inherit
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+            color: var(--muted)
+        }
+
+        /* Responsive */
+        @media (max-width: 920px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr
+            }
+
+            .project {
+                grid-template-columns: 1fr
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
 </head>
 <body>
-  <a class="skip" href="#main" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to content</a>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="brand"><span class="dot" aria-hidden="true"></span> <span>Nunya • Game Dev</span></div>
-        <div class="navlinks" role="navigation" aria-label="Primary">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-          <a class="btn" href="#projects">View Work</a>
+    <a class="skip" href="#main" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to content</a>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="brand"><span class="dot" aria-hidden="true"></span> <span>Matt Walsh • Game Dev</span></div>
+                <div class="navlinks" role="navigation" aria-label="Primary">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                    <a class="btn" href="#projects">View Work</a>
+                </div>
+            </nav>
         </div>
-      </nav>
-    </div>
-  </header>
+    </header>
 
-  <main id="main" class="container">
-    <section class="hero" aria-label="Intro">
-      <div>
-        <span class="tag">Available for internships / junior roles</span>
-        <h1>Hi, I’m <span class="accent">Nunya</span>. I design and build <span class="accent">gameplay systems</span> and AI in Unity.</h1>
-        <p class="lead">Gameplay programmer with a focus on stealth mechanics, input systems, and small‑team production. Comfortable shipping prototypes to playable builds, writing clean C#, and profiling for performance.</p>
-        <div style="display:flex; gap:10px; margin-top:12px">
-          <a class="btn primary" href="#projects">See projects</a>
-          <a class="btn" href="#contact">Contact</a>
-        </div>
-      </div>
-      <div class="art" role="img" aria-label="Stylized game montage placeholder"></div>
-    </section>
+    <main id="main" class="container">
+        <section class="hero" aria-label="Intro">
+            <div>
+                <span class="tag">Available for work</span>
+                <h1>Hi, I’m <span class="accent">Matt Walsh</span>. I design and build <span class="accent">games and simulations</span>.</h1>
+                <p class="lead">Gameplay programmer with a focus on combat mechanics, NPC AI, and solo/small‑team production. Comfortable shipping prototypes and packages to full builds, writing clean C#, and problem solving.</p>
+                <div style="display:flex; gap:10px; margin-top:12px">
+                    <a class="btn primary" href="#projects">See projects</a>
+                    <a class="btn" href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="art" role="img" aria-label="Stylized game montage placeholder"></div>
+        </section>
 
-    <section id="about" aria-label="About Me">
-      <div class="section-head">
-        <h2>About Me</h2>
-      </div>
-      <div class="about">
-        <div class="card">
-          <p>I’m a game developer who enjoys building systemic mechanics—especially AI perception, time‑loop logic, and moment‑to‑moment feel. Recent work includes a top‑down stealth prototype (<em>Metal Jeff Solid</em>) and tools for debugging Unity’s new Input System. I like structuring projects so they’re easy to extend: state machines, event buses, and data‑driven configs.</p>
-          <div class="stack" aria-label="Skills">
-            <span class="chip">Unity / C#</span>
-            <span class="chip">NavMesh & AI</span>
-            <span class="chip">Input System</span>
-            <span class="chip">Gameplay Systems</span>
-            <span class="chip">Git / GitHub</span>
-            <span class="chip">Optimization & Profiling</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3 style="margin-top:0">Highlights</h3>
-          <ul>
-            <li>Implemented guard vision (FOV + occlusion) and sound sensors with tunable curves.</li>
-            <li>Built a “loop reset” world state system inspired by <em>Outer Wilds</em>.</li>
-            <li>Debugged common Input System pitfalls (callbacks, actions, control schemes).</li>
-            <li>Shipped several small prototypes with playable WebGL builds and repositories.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        <section id="about" aria-label="About Me">
+            <div class="section-head">
+                <h2>About Me</h2>
+            </div>
+            <div class="about">
+                <div class="card">
+                    <p>I’m a game developer who enjoys building systemic mechanics. I enjoy perfecting fighting mechanics to include hand to hand, melee, and firearm based combat. My recent work has focused on NPC AI, time manipulation, and boss fight fluidity.</p>
+                    <div class="stack" aria-label="Skills">
+                        <span class="chip">Unity / C#</span>
+                        <span class="chip">NPC AI</span>
+                        <span class="chip">Unreal / C++</span>
+                        <span class="chip">Game Mechanics</span>
+                        <span class="chip">GitHub / Itch.IO</span>
+                        <span class="chip">Optimization & Refactoring</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0">Highlights</h3>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li>Shipped several prototypes and packages with playable builds and repositories.</li>
+                        <li>Several awards and commendations for my service in Law Enforcement, Military, and EMS.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <section id="projects" aria-label="Projects">
-      <div class="section-head">
-        <h2>Projects</h2>
-        <p class="lead">Each project links to a repository and a playable or video. Write‑ups include tools used, challenges, and what I learned.</p>
-      </div>
+        <section id="projects" aria-label="Projects">
+            <div class="section-head">
+                <h2>Projects</h2>
+                <p class="lead">Each project links to a repository and a playable or video. Write‑ups include tools used, challenges, and what I learned.</p>
+            </div>
 
-      <!-- Project 1 -->
-      <article class="project card" aria-labelledby="p1-title">
-        <div class="media">
-          <span class="badge">Unity • C# • AI</span>
-          <img src="https://picsum.photos/id/1011/900/600" alt="Screenshot of a top‑down stealth prototype with guards patrolling" />
-        </div>
-        <div class="proj-body">
-          <h3 id="p1-title" class="proj-title">Metal Jeff Solid — Top‑Down Stealth</h3>
-          <p class="meta">Systems: FOV vision cones, sound propagation, finite state machine, NavMesh patrolling.</p>
-          <p>
-            <strong>Process:</strong> Designed guard perception using dot product + view angle and Physics.Raycast for occlusion.
-            Parameterized hearing with radius falloff and crouch modifiers. FSM states (Patrol → Investigate → Chase → Search) pull from a shared Blackboard.
-          </p>
-          <ul style="margin:0 0 6px 16px">
-            <li><strong>Tools:</strong> Unity 2022 LTS, C#, NavMesh, Cinemachine, Input System.</li>
-            <li><strong>Challenge:</strong> Agents seeing/hearing through walls. <strong>Fix:</strong> Layer masks + raycast occlusion and spatial queries.</li>
-            <li><strong>Learned:</strong> Tuning perception curves beats binary thresholds for fair stealth.</li>
-          </ul>
-          <div class="links">
-            <a class="btn" href="#" aria-disabled="true">Playable (WebGL) – add link</a>
-            <a class="btn" href="#" aria-disabled="true">GitHub – add repo</a>
-            <a class="btn" href="https://www.youtube.com/embed/dQw4w9WgXcQ" target="_blank" rel="noopener">Video</a>
-          </div>
-        </div>
-      </article>
+            <!-- Project 1 -->
+            <article class="project card" aria-labelledby="p1-title">
+                <div class="media">
+                    <span class="badge">Unity • C#</span>
+                    <img src="https://img.itch.zone/aW1nLzIxMTE1NDY3LnBuZw==/original/r9Pmfk.png" alt="Screenshot of Knight Dash" />
+                </div>
+                <div class="proj-body">
+                    <h3 id="p1-title" class="proj-title">Knight Dash</h3>
+                    <p class="meta">Fast dash-runner with forced forward movement, obstacle dodging, and stamina management (plus bullet-hell elements).</p>
+                    <p>
+                        <strong>Process:</strong> Built a tight dash loop and stamina system to push risk/reward while the knight auto-advances.
+                        Level lanes and rock obstacles create readable “micro-puzzles”; stamina gates spam-dashing, so timing matters.
+                        Playtesting focused on hitbox fairness and dash responsiveness under constant motion.
+                    </p>
+                    <ul style="margin:0 0 6px 16px">
+                        <li><strong>Tools:</strong> Unity (C#), Cinemachine, Git/GitHub, and Itch.IO.</li>
+                        <li><strong>Challenge:</strong> Balancing stamina drain vs. dash feel during forced movement.</li>
+                        <li><strong>Fix:</strong> Tuned dash i-frames & recovery, adjusted obstacle spacing, and added cooldown buffers for consistency.</li>
+                        <li><strong>Learned:</strong> Clear telegraphing + generous buffers beat raw difficulty for “flow” in auto-scrollers.</li>
+                    </ul>
+                    <div class="links">
+                        <a class="btn" href="https://bigdaddystinger.itch.io/team4final" target="_blank" rel="noopener">Play on itch.io</a>
+                        <a class="btn" href="https://github.com/BigDaddyStinger/GAME1343_Team4_FinalProject" target="_blank" rel="noopener">GitHub Repo</a>
+                        <a class="btn" href="#" target="_blank" rel="noopener">Watch on YouTube (add link)</a>
+                    </div>
+                </div>
+            </article>
 
-      <!-- Project 2 -->
-      <article class="project card" aria-labelledby="p2-title">
-        <div class="media">
-          <span class="badge">Unity • Systems</span>
-          <iframe title="Time‑loop demo" src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-        <div class="proj-body">
-          <h3 id="p2-title" class="proj-title">Time‑Loop Sandbox</h3>
-          <p class="meta">World state snapshots, scheduled events, and persistent knowledge.</p>
-          <p>
-            <strong>Process:</strong> Authored a timeline of events (ScriptableObjects) with deterministic seeds. On reset, systems rebuild from cached archetype state.
-            Persisted player knowledge via save slots that unlock new branches.
-          </p>
-          <ul style="margin:0 0 6px 16px">
-            <li><strong>Tools:</strong> Unity Addressables, ScriptableObjects, DOTS‑friendly data layout where helpful.</li>
-            <li><strong>Challenge:</strong> Resetting hundreds of objects quickly. <strong>Fix:</strong> Object pools + delta reinitialization.</li>
-            <li><strong>Learned:</strong> Separate <em>what happened</em> from <em>what the player knows</em> to keep loops clean.</li>
-          </ul>
-          <div class="links">
-            <a class="btn" href="#" aria-disabled="true">Download/Play – add link</a>
-            <a class="btn" href="#" aria-disabled="true">GitHub – add repo</a>
-          </div>
-        </div>
-      </article>
+            <!-- Project 2 -->
+            <article class="project card" aria-labelledby="p2-title">
+                <div class="media">
+                    <span class="badge">Unity • C# • Boss AI</span>
+                    <iframe title="" src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="proj-body">
+                    <h3 id="p2-title" class="proj-title">Box Man Boss Fight</h3>
+                    <p class="meta">C#-driven state machine with 3 escalating phases, readable telegraphs, and pattern mixing.</p>
+                    <p>
+                        <strong>Process:</strong>Implemented a phase-based boss using a script based state machine and
+                        health thresholds to trigger behavior swaps. Phase 1 teaches the player with simple, punishable moves.
+                        Phase 2 layers combos and an arena-wide projectile pattern. Phase 3 enrages with speed scaling and a
+                        ground-slam to break turtling. Animation Events gate hit windows. Cooldowns & anticipation frames keep it patterned.
+                    </p>
+                    <ul style="margin:0 0 6px 16px">
+                        <li><strong>Phase 1:</strong> <em>Staple Throw</em> (single), <em>Kick</em>, <em>Normal Swing</em>.</li>
+                        <li><strong>Phase 2:</strong> Adds <em>Swing Combo 1</em>, <em>Swing Combo 2</em>, <em>360 Swing</em>, and a “hailstorm” multi-staple barrage.</li>
+                        <li><strong>Phase 3 (Enraged):</strong> Adds <em>Slam</em>; global boss speed ×<strong>1.25</strong>; tighter timings and shorter recovery.</li>
+                    </ul>
+                    <ul style="margin:0 0 6px 16px">
+                        <li><strong>Tools:</strong> Unity 6, C#, Animator State Machine + parameters, Animation Events, Scriptable config for phase thresholds, Cinemachine.</li>
+                        <li><strong>Challenge:</strong>  Unintended transition loops & mistimed hitboxes during combos.</li>
+                        <li><strong>Fix:</strong> Explicit exit conditions per state, normalized transition durations, rooted windups, and event-driven hitbox toggles.</li>
+                        <li><strong>Learned:</strong> Telegraphs + recovery windows matter more than raw damage; small speed buffs (e.g., 1.25×) dramatically change pressure.</li>
+                    </ul>
+                    <div class="links">
+                        <a class="btn" href="#" target="_blank" rel="noopener">Play on itch.io (add link)</a>
+                        <a class="btn" href="https://github.com/BigDaddyStinger/Boss-Rush_MW" target="_blank" rel="noopener">GitHub Repo</a>
+                        <a class="btn" href="#" target="_blank" rel="noopener">Watch on YouTube (add link)</a>
+                    </div>
+                </div>
+            </article>
 
-      <!-- Project 3 -->
-      <article class="project card" aria-labelledby="p3-title">
-        <div class="media">
-          <span class="badge">C# • Tooling</span>
-          <img src="https://picsum.photos/id/1033/900/600" alt="Editor tooling screenshot placeholder" />
-        </div>
-        <div class="proj-body">
-          <h3 id="p3-title" class="proj-title">Input System Debugger</h3>
-          <p class="meta">Inspector window for actions, rebinding UI, and control scheme diagnostics.</p>
-          <p>
-            <strong>Process:</strong> Built a custom EditorWindow to visualize action maps and live device events.
-            Added runtime UI for rebinding with conflict checks and persistence.
-          </p>
-          <ul style="margin:0 0 6px 16px">
-            <li><strong>Tools:</strong> Unity Input System, UI Toolkit, C#.</li>
-            <li><strong>Challenge:</strong> Non‑firing callbacks. <strong>Fix:</strong> Verified PlayerInput messages and enabled action maps per scene.</li>
-            <li><strong>Learned:</strong> Good diagnostics prevent rage‑debugging later.</li>
-          </ul>
-          <div class="links">
-            <a class="btn" href="#" aria-disabled="true">Package Repo – add link</a>
-            <a class="btn" href="#" aria-disabled="true">Docs – add link</a>
-          </div>
-        </div>
-      </article>
-    </section>
+            <!-- Project 3 -->
+            <article class="project card" aria-labelledby="p3-title">
+                <div class="media">
+                    <span class="badge">Unity • C# • Multi-Player</span>
+                    <img src="https://img.itch.zone/aW1nLzIzODU1MjA1LnBuZw==/original/A9rKUw.png" alt="Local multiplayer split-screen gameplay placeholder" />
+                </div>
+                <div class="proj-body">
+                    <h3 id="p3-title" class="proj-title">Fun Run</h3>
+                    <p class="meta">Press-to-join with Unity’s Input System, automatic player spawning, per-player cameras, and split-screen layout.</p>
+                    <p>
+                        <strong>Process:</strong> Implemented <em>PlayerInputManager</em> for dynamic join/leave, supporting keyboard pairs and gamepads.
+                        Each spawned player gets its own <em>PlayerInput</em>, camera, and UI layer. A lightweight manager assigns Cinemachine brains
+                        and screen regions, and actions are enabled per-player to prevent input crosstalk.
+                    </p>
+                    <ul style="margin:0 0 6px 16px">
+                        <li><strong>Tools:</strong> Unity 6, Input System (PlayerInput/PlayerInputManager), Cinemachine, ScriptableObjects for control schemes.</li>
+                        <li><strong>Challenge:</strong> “Player has no camera associated” & device sharing conflicts.</li>
+                        <li><strong>Fix:</strong> Assign <code>PlayerInput.camera</code> on spawn, map devices by control scheme, and gate action maps per instance.</li>
+                        <li><strong>Learned:</strong> Explicit device pairing + action-map enabling eliminates ghost inputs; clean camera assignment fixes odd split layouts.</li>
+                    </ul>
+                    <div class="links">
+                        <a class="btn" href="https://bigdaddystinger.itch.io/funrun" target="_blank" rel="noopener">Play on itch.io</a>
+                        <a class="btn" href="https://github.com/BigDaddyStinger/MpGameTeam5" target="_blank" rel="noopener">GitHub Repo</a>
+                        <a class="btn" href="https://youtu.be/iR5tp80nVqM" target="_blank" rel="noopener">Watch on YouTube</a>
+                    </div>
+                </div>
+            </article>
+        </section>
 
-    <section id="contact" aria-label="Contact">
-      <div class="section-head">
-        <h2>Contact</h2>
-        <p class="lead">Reach out for roles, collaborations, or to request code samples.</p>
-      </div>
-      <div class="card">
-        <div class="contact-grid">
-          <div>
-            <p><strong>Email:</strong> <a href="mailto:yourname@example.com">yourname@example.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="#" aria-disabled="true">add profile link</a></p>
-            <p><strong>GitHub:</strong> <a href="#" aria-disabled="true">add profile link</a></p>
-            <p style="color:var(--muted); font-size:14px">Tip: Replace placeholders above. A hosted form service is optional.</p>
-          </div>
-          <form method="post" action="#" onsubmit="alert('This demo uses mailto or a form service. See HTML comments to enable.'); return false;" aria-label="Contact form">
-            <!-- To enable a working form for free, create a Formspree form and replace the action URL below: -->
-            <!-- <form method="POST" action="https://formspree.io/f/yourid"> -->
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <textarea name="message" placeholder="Message"></textarea>
-            <button class="btn primary" type="submit">Send</button>
-            <p style="margin:0; color:var(--muted); font-size:13px">Prefer email? <a href="mailto:yourname@example.com">Open your mail client</a>.</p>
-          </form>
+        <section id="contact" aria-label="Contact">
+            <div class="section-head">
+                <h2>Contact</h2>
+                <p class="lead"></p>
+            </div>
+            <div class="card">
+                <div class="contact-grid">
+                    <div>
+                        <p><strong>Email:</strong> <a href="mailto:mattwalsh5697@gmail.com">mattwalsh5697@gmail.com</a></p>
+                        <p><strong>LinkedIn:</strong> <a href="#" aria-disabled="true">N/A</a></p>
+                        <p><strong>GitHub:</strong> <a href="https://github.com/BigDaddyStinger" aria-disabled="true">https://github.com/BigDaddyStinger</a></p>
+                        <p style="color:var(--muted); font-size:14px">Tip: Replace placeholders above. A hosted form service is optional.</p>
+                    </div>
+                    <form method="post" action="#" onsubmit="alert('This demo uses mailto or a form service. See HTML comments to enable.'); return false;" aria-label="Contact form">
+                        <!-- To enable a working form for free, create a Formspree form and replace the action URL below: -->
+                        <!-- <form method="POST" action="https://formspree.io/f/yourid"> -->
+                        <input type="text" name="name" placeholder="Your name" required />
+                        <input type="email" name="email" placeholder="Email" required />
+                        <textarea name="message" placeholder="Message"></textarea>
+                        <button class="btn primary" type="submit">Send</button>
+                        <p style="margin:0; color:var(--muted); font-size:13px">Prefer email? <a href="mailto:mattwalsh5697@gmail.com">Open your mail client</a>.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+                <span>© <span id="year"></span> Matt Walsh. Built with HTML/CSS.</span>
+                <div style="display:flex; gap:12px">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer>
-    <div class="container">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
-        <span>© <span id="year"></span> Nunya. Built with HTML/CSS.</span>
-        <div style="display:flex; gap:12px">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
-  <!-- =========================
-       QUICK PERSONALIZATION TODOs
-       1) Replace name, email, and links.
-       2) Swap placeholder images/iframes with your own media.
-       3) For each project, write a 3–6 sentence process + bullets for Tools / Challenge / Learned.
-       4) Add real links for GitHub, playable builds (itch.io/WebGL), and videos.
-       5) Optional: Connect the form via Formspree or Netlify Forms.
-       ========================= -->
+    <!-- =========================
+         QUICK PERSONALIZATION TODOs
+         1) Replace name, email, and links.
+         2) Swap placeholder images/iframes with your own media.
+         3) For each project, write a 3–6 sentence process + bullets for Tools / Challenge / Learned.
+         4) Add real links for GitHub, playable builds (itch.io/WebGL), and videos.
+         5) Optional: Connect the form via Formspree or Netlify Forms.
+         ========================= -->
 </body>
 </html>
