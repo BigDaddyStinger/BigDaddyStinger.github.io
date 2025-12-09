@@ -170,9 +170,12 @@
         .hero .art {
             aspect-ratio: 4 / 3;
             border-radius: 20px;
-            background: radial-gradient(140px 120px at 70% 30%, color-mix(in oklab, var(--acc2) 25%, transparent), transparent 60%), radial-gradient(180px 140px at 30% 70%, color-mix(in oklab, var(--acc) 25%, transparent), transparent 60%), url('https://picsum.photos/960/720?blur=1') center/cover no-repeat;
+            background: 
+                radial-gradient(140px 120px at 70% 30%, color-mix(in oklab, var(--acc2) 25%, transparent), transparent 60%), 
+                radial-gradient(180px 140px at 30% 70%, color-mix(in oklab, var(--acc) 25%, transparent), transparent 60%), 
+                url('img/IMG_0595.jpg') center/cover no-repeat;
             border: 1px solid var(--border);
-            box-shadow: 0 20px 80px #0006
+            box-shadow: 0 20px 80px #0006;
         }
 
         section {
@@ -436,8 +439,12 @@
             <article class="project card" aria-labelledby="p2-title">
                 <div class="media">
                     <span class="badge">Unity • C# • Boss AI</span>
-                    <iframe title="" src="https://youtu.be/mWQjhTp76Kc?si=7YyhPat7GFcYDItW" frameborder="0" allow="Boss Fight Preview" allowfullscreen></iframe>
-                </div>
+                    <iframe src="https://www.youtube.com/embed/mWQjhTp76Kc"
+                            title="Box Man Boss Fight Preview"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                    </iframe>                </div>
                 <div class="proj-body">
                     <h3 id="p2-title" class="proj-title">Box Man Boss Fight</h3>
                     <p class="meta">C#-driven state machine with 3 escalating phases, readable telegraphs, and pattern mixing.</p>
@@ -461,7 +468,7 @@
                     <div class="links">
                         <!--  <a class="btn" href="#" target="_blank" rel="noopener">Play on itch.io (add link)</a> -->
                         <a class="btn" href="https://github.com/BigDaddyStinger/Boss-Rush_MW" target="_blank" rel="noopener">GitHub Repo</a>
-                        <a class="btn" href="https://youtube.com/mWQjhTp76Kc" target="_blank" rel="noopener">Watch on YouTube (add link)</a>
+                        <a class="btn" href="https://youtube.com/mWQjhTp76Kc" target="_blank" rel="noopener">Watch on YouTube</a>
                     </div>
                 </div>
             </article>
