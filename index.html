@@ -340,6 +340,324 @@
                 grid-template-columns: 1fr
             }
         }
+
+        /* Redesigned About section */
+        .about-intro {
+            max-width: 850px;
+            margin-bottom: 28px;
+        }
+
+            .about-intro p {
+                color: var(--muted);
+                font-size: 17px;
+            }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .about-panel {
+            padding: 26px;
+            box-shadow: none;
+        }
+
+            .about-panel h3 {
+                margin: 0 0 20px;
+                font-size: 20px;
+                color: var(--acc);
+            }
+
+        .education-item + .education-item,
+        .award-item + .award-item {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border);
+        }
+
+        .education-item h4,
+        .award-item h4 {
+            margin: 0 0 5px;
+            font-size: 16px;
+            line-height: 1.45;
+        }
+
+        .education-item p,
+        .award-item p {
+            margin: 4px 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .education-status {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: var(--acc2);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .about-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+            .about-list li {
+                margin-bottom: 12px;
+            }
+
+                .about-list li:last-child {
+                    margin-bottom: 0;
+                }
+
+        .about-skills {
+            margin-top: 24px;
+        }
+
+        @media (max-width: 760px) {
+            .about-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .about-panel {
+                padding: 22px;
+            }
+        }
+
+        /* Consistent cards and spacing */
+        .card {
+            border-radius: 16px;
+            padding: 24px;
+            background: var(--card);
+            box-shadow: 0 4px 18px #0002;
+        }
+
+        /* Equal About cards */
+        .about-layout {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-auto-rows: 1fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .about-panel {
+            padding: 26px;
+            min-width: 0;
+        }
+
+            .about-panel h3 {
+                margin: 0 0 20px;
+                line-height: 1.3;
+            }
+
+            .about-panel > p {
+                margin: 0 0 16px;
+            }
+
+                .about-panel > p:last-child {
+                    margin-bottom: 0;
+                }
+
+        .about-intro {
+            max-width: 850px;
+            margin-bottom: 28px;
+        }
+
+        /* Consistent skills grid */
+        .about-skills {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+            .about-skills .chip {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                border-radius: 10px;
+                padding: 10px 12px;
+            }
+
+        /* Consistent section headings */
+        .section-head {
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+            .section-head .lead {
+                max-width: 55ch;
+                margin: 0;
+            }
+
+        /* Separate project cards */
+        .project {
+            grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+            .project + .project {
+                margin-top: 24px;
+            }
+
+            /* Same preview dimensions for every project */
+            .project .media {
+                aspect-ratio: 16 / 9;
+                width: 100%;
+                min-width: 0;
+                align-self: start;
+                border-radius: 12px;
+            }
+
+                .project .media img,
+                .project .media iframe {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                }
+
+                /* Show the complete artwork without stretching */
+                .project .media img {
+                    object-fit: contain;
+                }
+
+            .project .badge {
+                z-index: 1;
+            }
+
+        /* Remove inconsistent paragraph spacing */
+        .proj-body {
+            min-width: 0;
+            gap: 16px;
+        }
+
+            .proj-body > p {
+                margin: 0;
+            }
+
+            .proj-body .links {
+                margin-top: 4px;
+            }
+
+        .btn {
+            justify-content: center;
+            min-height: 42px;
+            border-radius: 10px;
+        }
+
+        /* Cleaner contact spacing */
+        #contact .card > p {
+            margin: 12px 0 0;
+            overflow-wrap: anywhere;
+        }
+
+        /* Keep section links below the sticky navigation */
+        section[id] {
+            scroll-margin-top: 100px;
+        }
+
+        /* Tablet and phone layout */
+        @media (max-width: 920px) {
+            .project {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .about-layout {
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+            }
+
+            .about-skills {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .section-head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .navlinks {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+        }
+
+        /* Restore larger project previews */
+        .project {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+            align-items: stretch;
+        }
+
+            .project .media {
+                aspect-ratio: auto;
+                align-self: stretch;
+                min-height: 320px;
+            }
+
+                .project .media img,
+                .project .media iframe {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                /* Fill the screenshot panel */
+                .project .media img {
+                    object-fit: cover;
+                }
+
+            /* Keep Cattaclipse artwork fully visible */
+            .project[aria-labelledby="cattaclipse-title"] .media img {
+                object-fit: contain;
+            }
+
+        /* Use a normal video shape when cards stack */
+        @media (max-width: 920px) {
+            .project {
+                grid-template-columns: 1fr;
+            }
+
+                .project .media {
+                    aspect-ratio: 16 / 9;
+                    min-height: 0;
+                }
+        }
+
+        .about-panel h3 {
+            text-align: center;
+        }
+
+        #contact .section-head {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #contact .card > h3 {
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -363,7 +681,7 @@
             <div>
                 <span class="tag">Available for work</span>
                 <h1>Hi, I’m <span class="accent">Matt Walsh</span>. I design and build <span class="accent">games and simulations</span>.</h1>
-                <p class="lead">Gameplay programmer with a focus on combat mechanics, NPC AI, and solo/small‑team production. Comfortable shipping prototypes and packages to full builds, writing clean C#, and problem solving.</p>
+                <p class="lead">Gameplay programmer with a focus on combat mechanics, NPC AI, and solo/small‑team production. Comfortable shipping prototypes and packages to full builds, creating digital assets, writing clean C#, and problem solving.</p>
                 <div style="display:flex; gap:10px; margin-top:12px">
                     <a class="btn primary" href="#projects">See projects</a>
                     <a class="btn" href="#contact">Contact</a>
@@ -376,28 +694,150 @@
             <div class="section-head">
                 <h2>About Me</h2>
             </div>
-            <div class="about">
-                <div class="card">
-                    <p>I’m a game developer who enjoys building systemic mechanics. I enjoy perfecting fighting mechanics to include hand to hand, melee, and firearm based combat. My recent work has focused on NPC AI, time manipulation, and boss fight fluidity.</p>
-                    <div class="stack" aria-label="Skills">
-                        <span class="chip">Unity / C#</span>
-                        <span class="chip">NPC AI</span>
-                        <span class="chip">Unreal / C++</span>
-                        <span class="chip">Game Mechanics</span>
-                        <span class="chip">GitHub / Itch.IO</span>
-                        <span class="chip">Optimization & Refactoring</span>
+
+            <div class="about-intro">
+                <p>
+                    I’m a game developer and the owner of
+                    <strong>GW Contracting, LLC</strong>. I enjoy building
+                    combat mechanics, NPC behaviors, and games that feel
+                    responsive and rewarding to play.
+                </p>
+                <p>
+                    My background spans military service, public safety,
+                    and IT. I bring that experience into my approach to
+                    teamwork, problem solving, and game development.
+                </p>
+            </div>
+
+            <div class="about-layout">
+
+                <!-- Education -->
+                <div class="card about-panel">
+                    <h3>Education</h3>
+
+                    <div class="education-item">
+                        <span class="education-status">Currently attending • Junior</span>
+                        <h4>BA in Game Design — Game Art Emphasis</h4>
+                        <p>Lindenwood University</p>
+                        <p>
+                            Working toward my bachelor’s degree, with plans
+                            to pursue a master’s degree in Game Design.
+                        </p>
+                    </div>
+
+                    <div class="education-item">
+                        <h4>
+                            AAS in Game Development–Programming
+                        </h4>
+                        <p>Lone Star College</p>
+                        <p><em>Summa Cum Laude</em></p>
+                    </div>
+
+                    <div class="education-item">
+                        <h4>Certificate in Game Development</h4>
+                        <p>Lone Star College</p>
+                        <p><em>With Distinction</em></p>
                     </div>
                 </div>
-                <div class="card">
-                    <h3 style="margin-top:0">Highlights</h3>
-                    <ul>
-                        <li>Proven ability to rapidly prototype mechanics and iterate based on player feedback, with a focus on clarity, responsiveness, and fun.</li>
-                        <li>Experienced in building AI behaviors including patrols, perception systems, combat logic, and decision-making trees.</li>
-                        <li>Developed advanced boss-fight systems with phase transitions, animation-driven hit windows, and clean state-machine architecture.</li>
-                        <li>Shipped several prototypes and packages with playable builds and repositories.</li>
-                        <!--  <li>Several awards and commendations for my service in Law Enforcement, Military, and EMS.</li>  -->
+
+                <!-- Development -->
+                <div class="card about-panel">
+                    <h3>Development Highlights</h3>
+
+                    <ul class="about-list">
+                        <li>
+                            <strong>Gameplay programming:</strong>
+                            Combat mechanics, player systems, and
+                            responsive controls using Unity and C#.
+                        </li>
+                        <li>
+                            <strong>3D &amp; digital asset creation:</strong>
+                            Creating models, textures, UI elements, and other visual
+                            assets for games and interactive projects.
+                        </li>
+                        <li>
+                            <strong>NPC &amp; boss AI:</strong>
+                            Patrols, perception, combat logic, and
+                            phase-based boss encounters.
+                        </li>
+                        <li>
+                            <strong>UI &amp; integration:</strong>
+                            Menus, camera systems, technical art,
+                            and audio integration.
+                        </li>
+                        <li>
+                            <strong>Prototyping &amp; production:</strong>
+                            Iterating on player feedback and bringing
+                            team projects together into playable builds.
+                        </li>
                     </ul>
                 </div>
+
+                <!-- Prior careers -->
+                <div class="card about-panel">
+                    <h3>Background &amp; Service</h3>
+
+                    <p>
+                        Before moving into IT and game development,
+                        I served in the U.S. Army National Guard and
+                        worked in law enforcement, corrections,
+                        emergency medical services, and private security.
+                    </p>
+
+                    <p>
+                        My experience includes serving as a patrol
+                        sergeant, facility first sergeant, training
+                        officer, private military contractor, and 
+                        remote-site managing medic.
+                    </p>
+
+                    <p>
+                        Those roles shaped my approach to leadership,
+                        communication, and solving problems under pressure.
+                        They also inform my interest in believable
+                        tactical mechanics and simulations.
+                    </p>
+                </div>
+
+                <!-- Selected awards -->
+                <div class="card about-panel">
+                    <h3>Awards &amp; Commendations</h3>
+
+                    <div class="award-item">
+                        <h4>Award for Valor</h4>
+                        <p>Watford City Police Department</p>
+                    </div>
+
+                    <div class="award-item">
+                        <h4>Life Saving Award</h4>
+                        <p>Watford City Police Department</p>
+                    </div>
+
+                    <div class="award-item">
+                        <h4>Letter of Commendation</h4>
+                        <p>U.S. Senator John Hoeven</p>
+                    </div>
+
+                    <div class="award-item">
+                        <h4>Certificate and Letter of Commendation</h4>
+                        <p>
+                            U.S. Indian Police Academy /
+                            Bureau of Indian Affairs
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stack about-skills" aria-label="Skills">
+                <span class="chip">Unity &amp; C#</span>
+                <span class="chip">Adobe &amp; Gimp</span>
+                <span class="chip">Unreal &amp; C++</span>
+                <span class="chip">Game Mechanics</span>
+                <span class="chip">Blender &amp; Maya</span>
+                <span class="chip">AI &amp; Story Development</span>
+                <span class="chip">UI &amp; Camera Systems</span>
+                <span class="chip">GitHub &amp; itch.io</span>
+                <span class="chip">Optimization &amp; Refactoring</span>
             </div>
         </section>
 
@@ -406,6 +846,50 @@
                 <h2>Projects</h2>
                 <p class="lead">Each project links to a repository and a playable or video. Write‑ups include tools used, challenges, and what I learned.</p>
             </div>
+
+            <!-- Featured Project: Cattaclipse -->
+            <article class="project card" aria-labelledby="cattaclipse-title">
+                <div class="media">
+                    <span class="badge">Unity • C# • Windows / Linux</span>
+                    <img src="https://img.itch.zone/aW1nLzI3MDU5NzE1LnBuZw%3D%3D/original/jxo5qa.png"
+                         alt="Cattaclipse title artwork"
+                         style="object-fit:contain" />
+                </div>
+
+                <div class="proj-body">
+                    <h3 id="cattaclipse-title" class="proj-title">Cattaclipse</h3>
+
+                    <p class="meta">
+                        Moonlight Team • A downloadable game for Windows and Linux.
+                    </p>
+
+                    <p>
+                        I worked across interface programming, technical art, audio,
+                        and gameplay integration to help bring the team's work
+                        together into playable builds.
+                    </p>
+
+                    <ul style="margin:0 0 6px 16px">
+                        <li><strong>Programming:</strong> UI, menu systems, and camera systems.</li>
+                        <li><strong>Technical art:</strong> UI and cut-scene implementation.</li>
+                        <li><strong>Audio:</strong> Audio engineering and integration.</li>
+                        <li><strong>Production:</strong> Gameplay integration, builds, and publishing.</li>
+                        <li><strong>Tools:</strong> Unity and C#.</li>
+                    </ul>
+
+                    <div class="links">
+                        <a class="btn primary"
+                           href="https://bigdaddystinger.itch.io/cattaclipse"
+                           target="_blank"
+                           rel="noopener">Download on itch.io</a>
+
+                        <a class="btn"
+                           href="https://bigdaddystinger.itch.io/"
+                           target="_blank"
+                           rel="noopener">My itch.io profile</a>
+                    </div>
+                </div>
+            </article>
 
             <!-- Project 1 -->
             <article class="project card" aria-labelledby="p1-title">
@@ -441,10 +925,11 @@
                     <span class="badge">Unity • C# • Boss AI</span>
                     <iframe src="https://www.youtube.com/embed/mWQjhTp76Kc"
                             title="Box Man Boss Fight Preview"
-                            frameborder="0"
+                            referrerpolicy="strict-origin-when-cross-origin"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
-                    </iframe>                </div>
+                    </iframe>
+                </div>
                 <div class="proj-body">
                     <h3 id="p2-title" class="proj-title">Box Man Boss Fight</h3>
                     <p class="meta">C#-driven state machine with 3 escalating phases, readable telegraphs, and pattern mixing.</p>
@@ -473,62 +958,46 @@
                 </div>
             </article>
 
-            <!-- Project 3 -->
-            <article class="project card" aria-labelledby="p3-title">
-                <div class="media">
-                    <span class="badge">Unity • C# • Multi-Player</span>
-                    <iframe src="https://www.youtube.com/embed/iR5tp80nVqM"
-                            title="Fun Run Gameplay Preview"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="proj-body">
-                    <h3 id="p3-title" class="proj-title">Fun Run</h3>
-                    <p class="meta">Press-to-join with Unity’s Input System, automatic player spawning, per-player cameras, and split-screen layout.</p>
-                    <p>
-                        <strong>Process:</strong> Implemented <em>PlayerInputManager</em> for dynamic join/leave, supporting keyboard pairs and gamepads.
-                        Each spawned player gets its own <em>PlayerInput</em>, camera, and UI layer. A lightweight manager assigns Cinemachine brains
-                        and screen regions, and actions are enabled per-player to prevent input crosstalk.
-                    </p>
-                    <ul style="margin:0 0 6px 16px">
-                        <li><strong>Tools:</strong> Unity 6, Input System (PlayerInput/PlayerInputManager), Cinemachine, ScriptableObjects for control schemes.</li>
-                        <li><strong>Challenge:</strong> “Player has no camera associated” & device sharing conflicts.</li>
-                        <li><strong>Fix:</strong> Assign <code>PlayerInput.camera</code> on spawn, map devices by control scheme, and gate action maps per instance.</li>
-                        <li><strong>Learned:</strong> Explicit device pairing + action-map enabling eliminates ghost inputs; clean camera assignment fixes odd split layouts.</li>
-                    </ul>
-                    <div class="links">
-                        <a class="btn" href="https://bigdaddystinger.itch.io/funrun" target="_blank" rel="noopener">Play on itch.io</a>
-                        <a class="btn" href="https://github.com/BigDaddyStinger/MpGameTeam5" target="_blank" rel="noopener">GitHub Repo</a>
-                        <a class="btn" href="https://youtu.be/iR5tp80nVqM" target="_blank" rel="noopener">Watch on YouTube</a>
-                    </div>
-                </div>
-            </article>
         </section>
 
         <section id="contact" aria-label="Contact">
             <div class="section-head">
                 <h2>Contact</h2>
-                <p class="lead"></p>
             </div>
+
             <div class="card">
+                <h3 style="margin-top:0">Matt Walsh • GW Contracting, LLC</h3>
+
                 <div class="contact-grid">
                     <div>
-                        <p><strong>Email:</strong> <a href="mailto:mattwalsh5697@gmail.com">mattwalsh5697@gmail.com</a></p>
-                        <p><strong>LinkedIn:</strong> <a href="#" aria-disabled="true">N/A</a></p>
-                        <p><strong>GitHub:</strong> <a href="https://github.com/BigDaddyStinger" aria-disabled="true">https://github.com/BigDaddyStinger</a></p>
-                        <!--  <p style="color:var(--muted); font-size:14px">Tip: Replace placeholders above. A hosted form service is optional.</p> -->
+                        <p>
+                            <strong>Email:</strong>
+                            <a href="mailto:mattwalsh5697@gmail.com">
+                                mattwalsh5697@gmail.com
+                            </a>
+                        </p>
+
+                        <p>
+                            <strong>Phone:</strong>
+                            <a href="tel:+19369003533">(936) 900-3533</a>
+                        </p>
                     </div>
-                    <form method="post" action="#" onsubmit="alert('This demo uses mailto or a form service. See HTML comments to enable.'); return false;" aria-label="Contact form">
-                        <!-- To enable a working form for free, create a Formspree form and replace the action URL below: -->
-                        <!-- <form method="POST" action="https://formspree.io/f/yourid"> -->
-                        <input type="text" name="name" placeholder="Your name" required />
-                        <input type="email" name="email" placeholder="Email" required />
-                        <textarea name="message" placeholder="Message"></textarea>
-                        <button class="btn primary" type="submit">Send</button>
-                        <p style="margin:0; color:var(--muted); font-size:13px">Prefer email? <a href="mailto:mattwalsh5697@gmail.com">Open your mail client</a>.</p>
-                    </form>
+
+                    <div>
+                        <p>
+                            <strong>GitHub:</strong>
+                            <a href="https://github.com/BigDaddyStinger"
+                               target="_blank"
+                               rel="noopener">BigDaddyStinger</a>
+                        </p>
+
+                        <p>
+                            <strong>itch.io:</strong>
+                            <a href="https://bigdaddystinger.itch.io/"
+                               target="_blank"
+                               rel="noopener">BigDaddyStinger</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
