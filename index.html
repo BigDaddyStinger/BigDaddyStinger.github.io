@@ -1,1023 +1,1695 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Matt Walsh | Game Developer Portfolio</title>
-    <meta name="description" content="Portfolio" />
-    <meta property="og:title" content="Matt Walsh | Game Developer" />
-    <meta property="og:description" content="Projects, process write‑ups, code links, and contact." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://BigDaddyStinger.github.io/img/IMG_0595.jpg" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%2300cc88' d='M32 4l26 15v26L32 60 6 45V19z'/%3E%3Cpath fill='white' d='M21 40V24l11-6 11 6v16l-11 6z'/%3E%3C/svg%3E" />
-    <style>
-        :root {
-            --bg: #0b0f14;
-            --bg2: #0f151c;
-            --text: #e8eef7;
-            --muted: #9fb3c8;
-            --acc: #6ae3b5;
-            --acc2: #7aa2ff;
-            --card: #0e141b;
-            --border: #1b2430;
-        }
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Matt Walsh — game development, art and design portfolio.">
+        <meta name="referrer" content="strict-origin-when-cross-origin">
+        <title>
+            Matt Walsh | Games, Art
+            &
+            Design
+        </title>
 
-        @media (prefers-color-scheme: light) {
+        <style>
+            /* EDIT COLORS HERE. This file works without a build tool or external libraries. */
             :root {
-                --bg: #f7fbff;
-                --bg2: #ffffff;
-                --text: #0b0f14;
-                --muted: #415367;
-                --acc: #0db57e;
-                --acc2: #2a6cff;
-                --card: #ffffff;
-                --border: #dfe7f1;
+                color-scheme: dark;
+                --bg: #0b0f14;
+                --panel: #101720;
+                --ink: #e8eef7;
+                --muted: #a3b3c7;
+                --line: #243040;
+                --green: #6ae3b5;
+                --blue: #7aa2ff;
+                --soft: #162231;
             }
-
+            
+            * {
+                box-sizing: border-box;
+            }
+            
+            html {
+                scroll-behavior: smooth;
+                scroll-padding-top: 100px;
+            }
+            
             body {
-                background: linear-gradient(180deg,#f2f7ff 0,#fff 100%) fixed;
+                margin: 0;
+                background: radial-gradient(ellipse at 90% 0,#172534 0,transparent 40%),var(--bg);
+                color: var(--ink);
+                font: 16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif;
             }
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            margin: 0;
-            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-            background: radial-gradient(1200px 600px at 80% -10%, #16202b 0%, transparent 60%), radial-gradient(800px 400px at -10% 0%, #111a22 0%, transparent 60%), var(--bg);
-            color: var(--text);
-            line-height: 1.6
-        }
-
-        a {
-            color: var(--acc2);
-            text-decoration: none
-        }
-
+            
+            a {
+                color: var(--blue);
+                text-decoration: none;
+            }
+            
             a:hover {
-                text-decoration: underline
+                text-decoration: underline;
             }
-
-        .container {
-            width: min(1100px, 92vw);
-            margin-inline: auto;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            backdrop-filter: saturate(140%) blur(10px);
-            background: color-mix(in oklab, var(--bg2) 88%, transparent);
-            border-bottom: 1px solid var(--border);
-            z-index: 10
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 14px 0
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 800;
-            letter-spacing: .3px
-        }
-
-            .brand .dot {
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: linear-gradient(135deg,var(--acc),var(--acc2))
+            
+            button {
+                font: inherit;
             }
-
-        .navlinks {
-            display: flex;
-            gap: 24px;
-            align-items: center
-        }
-
-            .navlinks a {
-                color: var(--muted)
+            
+            button,a {
+                -webkit-tap-highlight-color: transparent;
             }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid var(--border);
-            background: linear-gradient(180deg, color-mix(in oklab, var(--card) 70%, transparent), color-mix(in oklab, var(--card) 100%, black 2%));
-            padding: 10px 14px;
-            border-radius: 12px;
-            color: var(--text);
-            text-decoration: none;
-            box-shadow: 0 1px 0 #0002 inset, 0 1px 10px #0003;
-            transition: transform .08s ease, border-color .2s ease
-        }
-
-            .btn:hover {
-                transform: translateY(-1px);
-                border-color: color-mix(in oklab, var(--acc2) 40%, var(--border))
+            
+            :focus-visible {
+                outline: 3px solid var(--green);
+                outline-offset: 5px;
             }
-
-            .btn.primary {
-                border-color: color-mix(in oklab, var(--acc) 40%, var(--border));
-                background: linear-gradient(180deg, color-mix(in oklab, var(--acc) 18%, var(--card)), color-mix(in oklab, var(--card) 100%, black 2%));
+            
+            [hidden] {
+                display: none!important;
             }
-
-        .hero {
-            padding: 64px 0 32px;
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            gap: 32px;
-            align-items: center
-        }
-
-            .hero h1 {
-                font-size: clamp(32px, 4vw + 8px, 52px);
-                line-height: 1.2;
-                margin: 0 0 12px
+            
+            .wrap {
+                width: min(1120px,92%);
+                margin: auto;
             }
-
-        .accent {
-            background: linear-gradient(135deg, var(--acc2), var(--acc));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: var(--muted);
-            border: 1px dashed var(--border);
-            padding: 6px 10px;
-            border-radius: 999px
-        }
-
-        .hero .art {
-            aspect-ratio: 4 / 3;
-            border-radius: 20px;
-            background: 
-                radial-gradient(140px 120px at 70% 30%, color-mix(in oklab, var(--acc2) 25%, transparent), transparent 60%), 
-                radial-gradient(180px 140px at 30% 70%, color-mix(in oklab, var(--acc) 25%, transparent), transparent 60%), 
-                url('img/IMG_0595.jpg') center/cover no-repeat;
-            border: 1px solid var(--border);
-            box-shadow: 0 20px 80px #0006;
-        }
-
-        section {
-            padding: 48px 0
-        }
-
-        .section-head {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 18px
-        }
-
-        h2 {
-            font-size: clamp(22px, 2.2vw + 6px, 32px);
-            margin: 0
-        }
-
-        p.lead {
-            color: var(--muted);
-            max-width: 70ch
-        }
-
-        .about {
-            display: grid;
-            grid-template-columns: .8fr 1.2fr;
-            gap: 28px
-        }
-
-        .card {
-            background: linear-gradient(180deg, color-mix(in oklab, var(--card) 98%, black 0%), color-mix(in oklab, var(--card) 100%, black 3%));
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 18px;
-            box-shadow: 0 10px 30px #0005
-        }
-
-        .stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px
-        }
-
-        .chip {
-            font-size: 13px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: color-mix(in oklab, var(--card) 80%, transparent)
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 16px
-        }
-
-        .project {
-            grid-column: span 12;
-            display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 16px;
-            align-items: stretch
-        }
-
-        .media {
-            position: relative;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            overflow: hidden;
-            background: #000
-        }
-
-            .media img, .media iframe {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block
+            
+            .skip {
+                position: absolute;
+                left: 12px;
+                top: -100px;
+                background: var(--panel);
+                padding: 10px;
+                z-index: 50;
             }
-
-        .badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 12px;
-            background: color-mix(in oklab, var(--bg2) 80%, transparent);
-            border: 1px solid var(--border);
-            padding: 4px 8px;
-            border-radius: 999px
-        }
-
-        .proj-body {
-            display: flex;
-            flex-direction: column;
-            gap: 12px
-        }
-
-        .proj-title {
-            font-weight: 700;
-            font-size: 20px;
-            margin: 0
-        }
-
-        .meta {
-            color: var(--muted);
-            font-size: 14px
-        }
-
-        .links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px
-        }
-
-        form {
-            display: grid;
-            gap: 10px
-        }
-
-        input, textarea {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 10px 12px;
-            font: inherit
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 28px 0;
-            color: var(--muted)
-        }
-
-        /* Responsive */
-        @media (max-width: 920px) {
-            .hero {
-                grid-template-columns: 1fr;
+            
+            .skip:focus {
+                top: 12px;
             }
-
-            .about {
-                grid-template-columns: 1fr
+            
+            header {
+                position: sticky;
+                top: 0;
+                z-index: 20;
+                background: #0b0f14ed;
+                border-bottom: 1px solid var(--line);
+                backdrop-filter: blur(12px);
             }
-
-            .project {
-                grid-template-columns: 1fr
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr
-            }
-        }
-
-        /* Redesigned About section */
-        .about-intro {
-            max-width: 850px;
-            margin-bottom: 28px;
-        }
-
-            .about-intro p {
-                color: var(--muted);
-                font-size: 17px;
-            }
-
-        .about-layout {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 20px;
-            align-items: start;
-        }
-
-        .about-panel {
-            padding: 26px;
-            box-shadow: none;
-        }
-
-            .about-panel h3 {
-                margin: 0 0 20px;
-                font-size: 20px;
-                color: var(--acc);
-            }
-
-        .education-item + .education-item,
-        .award-item + .award-item {
-            margin-top: 18px;
-            padding-top: 18px;
-            border-top: 1px solid var(--border);
-        }
-
-        .education-item h4,
-        .award-item h4 {
-            margin: 0 0 5px;
-            font-size: 16px;
-            line-height: 1.45;
-        }
-
-        .education-item p,
-        .award-item p {
-            margin: 4px 0;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .education-status {
-            display: inline-block;
-            margin-bottom: 8px;
-            color: var(--acc2);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: .06em;
-            text-transform: uppercase;
-        }
-
-        .about-list {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-            .about-list li {
-                margin-bottom: 12px;
-            }
-
-                .about-list li:last-child {
-                    margin-bottom: 0;
-                }
-
-        .about-skills {
-            margin-top: 24px;
-        }
-
-        @media (max-width: 760px) {
-            .about-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .about-panel {
-                padding: 22px;
-            }
-        }
-
-        /* Consistent cards and spacing */
-        .card {
-            border-radius: 16px;
-            padding: 24px;
-            background: var(--card);
-            box-shadow: 0 4px 18px #0002;
-        }
-
-        /* Equal About cards */
-        .about-layout {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            grid-auto-rows: 1fr;
-            gap: 24px;
-            align-items: stretch;
-        }
-
-        .about-panel {
-            padding: 26px;
-            min-width: 0;
-        }
-
-            .about-panel h3 {
-                margin: 0 0 20px;
-                line-height: 1.3;
-            }
-
-            .about-panel > p {
-                margin: 0 0 16px;
-            }
-
-                .about-panel > p:last-child {
-                    margin-bottom: 0;
-                }
-
-        .about-intro {
-            max-width: 850px;
-            margin-bottom: 28px;
-        }
-
-        /* Consistent skills grid */
-        .about-skills {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
-            margin-top: 24px;
-        }
-
-            .about-skills .chip {
+            
+            nav {
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                text-align: center;
-                border-radius: 10px;
-                padding: 10px 12px;
+                justify-content: space-between;
+                gap: 24px;
+                padding: 19px 0;
             }
-
-        /* Consistent section headings */
-        .section-head {
-            align-items: center;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-
-            .section-head .lead {
-                max-width: 55ch;
-                margin: 0;
+            
+            .brand {
+                font-weight: 750;
+                letter-spacing: .2px;
+                white-space: nowrap;
+                color: var(--ink);
             }
-
-        /* Separate project cards */
-        .project {
-            grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-            gap: 24px;
-            align-items: start;
-        }
-
-            .project + .project {
-                margin-top: 24px;
+            
+            .dot {
+                display: inline-block;
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                background: var(--green);
+                margin-right: 10px;
             }
-
-            /* Same preview dimensions for every project */
-            .project .media {
-                aspect-ratio: 16 / 9;
-                width: 100%;
-                min-width: 0;
-                align-self: start;
-                border-radius: 12px;
-            }
-
-                .project .media img,
-                .project .media iframe {
-                    position: absolute;
-                    inset: 0;
-                    width: 100%;
-                    height: 100%;
-                    border: 0;
-                }
-
-                /* Show the complete artwork without stretching */
-                .project .media img {
-                    object-fit: contain;
-                }
-
-            .project .badge {
-                z-index: 1;
-            }
-
-        /* Remove inconsistent paragraph spacing */
-        .proj-body {
-            min-width: 0;
-            gap: 16px;
-        }
-
-            .proj-body > p {
-                margin: 0;
-            }
-
-            .proj-body .links {
-                margin-top: 4px;
-            }
-
-        .btn {
-            justify-content: center;
-            min-height: 42px;
-            border-radius: 10px;
-        }
-
-        /* Cleaner contact spacing */
-        #contact .card > p {
-            margin: 12px 0 0;
-            overflow-wrap: anywhere;
-        }
-
-        /* Keep section links below the sticky navigation */
-        section[id] {
-            scroll-margin-top: 100px;
-        }
-
-        /* Tablet and phone layout */
-        @media (max-width: 920px) {
-            .project {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 760px) {
-            .about-layout {
-                grid-template-columns: 1fr;
-                grid-auto-rows: auto;
-            }
-
-            .about-skills {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .section-head {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            .card {
-                padding: 22px;
-            }
-
-            nav {
-                flex-wrap: wrap;
-            }
-
+            
             .navlinks {
+                display: flex;
                 flex-wrap: wrap;
+                gap: 6px;
+            }
+            
+            .navlinks a {
+                padding: 8px 12px;
+                color: var(--muted);
+                border-radius: 8px;
+                font-size: 14px;
+            }
+            
+            .navlinks a[aria-current="page"] {
+                color: var(--green);
+                background: var(--soft);
+            }
+            
+            main {
+                min-height: 70vh;
+            }
+            
+            .hero {
+                padding: 68px 0 38px;
+                max-width: 790px;
+            }
+            
+            .eyebrow {
+                font-size: 12px;
+                letter-spacing: 1.8px;
+                text-transform: uppercase;
+                color: var(--green);
+                font-weight: 700;
+            }
+            
+            h1 {
+                font-size: clamp(34px,5vw,56px);
+                line-height: 1.13;
+                letter-spacing: -1.9px;
+                margin: 17px 0 20px;
+            }
+            
+            h2 {
+                font-size: clamp(24px,3vw,32px);
+                line-height: 1.25;
+                letter-spacing: -.6px;
+                margin: 0 0 16px;
+            }
+            
+            h3 {
+                font-size: 20px;
+                line-height: 1.35;
+                margin: 0 0 12px;
+            }
+            
+            h4 {
+                margin: 0 0 5px;
+                font-size: 16px;
+            }
+            
+            p {
+                margin: 0 0 18px;
+            }
+            
+            .muted,.lead {
+                color: var(--muted);
+            }
+            
+            .lead {
+                max-width: 66ch;
+                font-size: 18px;
+            }
+            
+            .accent {
+                color: var(--green);
+            }
+            
+            .section {
+                padding: 24px 0 40px;
+            }
+            
+            .section-head {
+                display: flex;
+                justify-content: space-between;
                 gap: 16px;
+                align-items: center;
+                margin: 0 0 22px;
             }
-        }
-
-        /* Restore larger project previews */
-        .project {
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
-            align-items: stretch;
-        }
-
-            .project .media {
-                aspect-ratio: auto;
-                align-self: stretch;
-                min-height: 320px;
+            
+            .section-head h2 {
+                margin: 0;
             }
-
-                .project .media img,
-                .project .media iframe {
-                    position: absolute;
-                    inset: 0;
-                    width: 100%;
-                    height: 100%;
-                }
-
-                /* Fill the screenshot panel */
-                .project .media img {
-                    object-fit: cover;
-                }
-
-            /* Keep Cattaclipse artwork fully visible */
-            .project[aria-labelledby="cattaclipse-title"] .media img {
+            
+            .section-head small {
+                color: var(--muted);
+            }
+            
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(3,minmax(0,1fr));
+                gap: 22px;
+            }
+            
+            .card {
+                background: var(--panel);
+                border: 1px solid var(--line);
+                border-radius: 15px;
+                overflow: hidden;
+            }
+            
+            .game-card {
+                display: flex;
+                flex-direction: column;
+                transition: transform .2s,border-color .2s;
+            }
+            
+            .game-card:hover {
+                transform: translateY(-4px);
+                border-color: #4d657d;
+            }
+            
+            .card-image {
+                aspect-ratio: 16/10;
+                display: block;
+                background: #080c11;
+                border-bottom: 1px solid var(--line);
+                overflow: hidden;
+                position: relative;
+            }
+            
+            .card-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+            }
+            
+            .card-image .missing {
+                position: absolute;
+                inset: 0;
+                display: grid;
+                place-items: center;
+                color: var(--muted);
+                background: linear-gradient(135deg,#1c2d42,#101720);
+            }
+            
+            .card-copy {
+                padding: 24px;
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+            }
+            
+            .card-copy h3 {
+                margin: 8px 0 12px;
+            }
+            
+            .card-copy p {
+                font-size: 14px;
+                color: var(--muted);
+                flex: 1;
+            }
+            
+            .tools {
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 1.2px;
+                color: var(--green);
+            }
+            
+            .button {
+                display: inline-flex;
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+                min-height: 44px;
+                padding: 10px 16px;
+                border-radius: 9px;
+                border: 1px solid var(--line);
+                background: var(--soft);
+                color: var(--ink);
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+            }
+            
+            .button:hover {
+                text-decoration: none;
+                border-color: var(--green);
+            }
+            
+            .button.primary {
+                background: #19352e;
+                color: var(--green);
+                border-color: #325c4e;
+            }
+            
+            .actions {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            
+            .callout {
+                margin: 30px 0 16px;
+                padding: 30px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 24px;
+            }
+            
+            .callout h3 {
+                margin-top: 6px;
+            }
+            
+            .callout p {
+                margin-bottom: 0;
+                color: var(--muted);
+            }
+            
+            .callout .button {
+                flex-shrink: 0;
+            }
+            
+            .back {
+                display: inline-block;
+                margin: 30px 0 6px;
+                color: var(--muted);
+                font-size: 14px;
+            }
+            
+            .detail-hero {
+                padding-top: 18px;
+                max-width: 870px;
+            }
+            
+            .detail-media {
+                margin: 0 0 30px;
+                border: 1px solid var(--line);
+                border-radius: 14px;
+                background: #080c11;
+                overflow: hidden;
+            }
+            
+            .detail-media img {
+                display: block;
+                width: 100%;
+                max-height: 570px;
                 object-fit: contain;
             }
-
-        /* Use a normal video shape when cards stack */
-        @media (max-width: 920px) {
-            .project {
-                grid-template-columns: 1fr;
+            
+            .video {
+                aspect-ratio: 16/9;
             }
-
-                .project .media {
-                    aspect-ratio: 16 / 9;
-                    min-height: 0;
+            
+            .video iframe {
+                display: block;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+            
+            .detail-grid {
+                display: grid;
+                grid-template-columns: minmax(0,2fr) minmax(220px,1fr);
+                gap: 26px;
+                align-items: start;
+                margin: 28px 0 48px;
+            }
+            
+            .detail-copy,.sidebar {
+                padding: 28px;
+            }
+            
+            .detail-copy h3:not(:first-child) {
+                margin-top: 30px;
+            }
+            
+            .detail-copy li {
+                margin-bottom: 12px;
+            }
+            
+            .sidebar dl {
+                margin: 0;
+            }
+            
+            .sidebar dt {
+                font-size: 12px;
+                color: var(--muted);
+                margin-top: 18px;
+            }
+            
+            .sidebar dt:first-child {
+                margin-top: 0;
+            }
+            
+            .sidebar dd {
+                margin: 3px 0 0;
+            }
+            
+            .sidebar .actions {
+                margin-top: 24px;
+                flex-direction: column;
+            }
+            
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 22px;
+            }
+            
+            .about-panel {
+                padding: 28px;
+            }
+            
+            .about-panel h3 {
+                text-align: center;
+                color: var(--green);
+                margin-bottom: 24px;
+            }
+            
+            .entry+.entry {
+                border-top: 1px solid var(--line);
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+            
+            .entry p {
+                font-size: 14px;
+                color: var(--muted);
+                margin: 4px 0;
+            }
+            
+            .about-panel li {
+                margin-bottom: 12px;
+            }
+            
+            .chips {
+                display: flex;
+                gap: 9px;
+                flex-wrap: wrap;
+                margin: 26px 0;
+            }
+            
+            .chip {
+                border: 1px solid var(--line);
+                color: var(--muted);
+                border-radius: 7px;
+                padding: 6px 11px;
+                font-size: 12px;
+            }
+            
+            .contact-card {
+                padding: 36px;
+            }
+            
+            .contact-card h2,.contact-card h3 {
+                text-align: center;
+            }
+            
+            .contact-grid {
+                max-width: 750px;
+                margin: 26px auto 0;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px 60px;
+            }
+            
+            .contact-grid p {
+                margin: 0 0 12px;
+                overflow-wrap: anywhere;
+            }
+            
+            .contact-grid strong {
+                font-size: 13px;
+                color: var(--muted);
+                display: block;
+            }
+            
+            .art-project {
+                padding: 28px;
+                margin-bottom: 28px;
+            }
+            
+            .comparison {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 22px;
+                margin: 24px 0;
+            }
+            
+            .comparison figure {
+                margin: 0;
+                min-width: 0;
+            }
+            
+            .photo-slot {
+                aspect-ratio: 4/3;
+                position: relative;
+                border: 1px solid var(--line);
+                border-radius: 10px;
+                overflow: hidden;
+                background: linear-gradient(150deg,#1b2c40,#101720);
+                display: grid;
+                place-items: center;
+                color: var(--muted);
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .photo-slot img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                background: #080c11;
+            }
+            
+            .comparison figcaption {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                margin-top: 10px;
+                font-size: 13px;
+                color: var(--muted);
+            }
+            
+            .art-project .chips {
+                margin-bottom: 0;
+            }
+            
+            footer {
+                border-top: 1px solid var(--line);
+                margin-top: 28px;
+                padding: 26px 0;
+                color: var(--muted);
+                font-size: 13px;
+            }
+            
+            .footer-row {
+                display: flex;
+                justify-content: space-between;
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+            
+            .footer-row a {
+                color: var(--muted);
+            }
+            
+            .empty-image-label {
+                padding: 30px;
+                text-align: center;
+                color: var(--muted);
+            }
+            
+            @media(max-width:900px) {
+                nav {
+                    align-items: flex-start;
+                    flex-direction: column;
+                    gap: 10px;
                 }
-        }
+            
+                .hero {
+                    padding-top: 42px;
+                }
+            
+                .grid {
+                    gap: 14px;
+                }
+            
+                .card-copy {
+                    padding: 19px;
+                }
+            
+                .detail-grid {
+                    grid-template-columns: 1fr;
+                }
+            
+                .sidebar .actions {
+                    flex-direction: row;
+                }
+            
+            }
+            
+            @media(max-width:680px) {
+                .grid,.about-grid,.comparison,.contact-grid {
+                    grid-template-columns: 1fr;
+                }
+            
+                .grid {
+                    gap: 22px;
+                }
+            
+                .callout {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding: 24px;
+                }
+            
+                .card-image {
+                    aspect-ratio: 16/9;
+                }
+            
+                .navlinks a {
+                    padding: 7px 9px;
+                }
+            
+                .hero {
+                    padding-top: 32px;
+                }
+            
+                h1 {
+                    letter-spacing: -1px;
+                }
+            
+                .section-head {
+                    align-items: flex-start;
+                    flex-direction: column;
+                }
+            
+                .contact-card,.about-panel,.art-project,.detail-copy,.sidebar {
+                    padding: 23px;
+                }
+            
+                .contact-grid {
+                    gap: 0;
+                }
+            
+                .comparison figcaption {
+                    flex-wrap: wrap;
+                }
+            
+                .footer-row {
+                    flex-direction: column;
+                }
+            
+            }
+            
+            @media(prefers-reduced-motion:reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+            
+                .game-card {
+                    transition: none;
+                }
+            
+                .game-card:hover {
+                    transform: none;
+                }
+            
+            }
+        </style>
+    </head>
+    <body>
+        <a class="skip" href="#main">
+            Skip to content
+        </a>
 
-        .about-panel h3 {
-            text-align: center;
-        }
-
-        #contact .section-head {
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        #contact .card > h3 {
-            text-align: center;
-        }
-
-    </style>
-</head>
-<body>
-    <a class="skip" href="#main" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to content</a>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="brand"><span class="dot" aria-hidden="true"></span> <span>Matt Walsh • Game Dev</span></div>
-                <div class="navlinks" role="navigation" aria-label="Primary">
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                    <a class="btn" href="#projects">View Work</a>
+        <header>
+            <nav class="wrap" aria-label="Primary">
+                <a class="brand" href="#games">
+                    <span class="dot" aria-hidden="true">
+                    </span>
+                    Matt Walsh · Game Dev
+                </a>
+                <div class="navlinks">
+                    <a href="#games" data-nav="games">
+                        Game Projects
+                    </a>
+                    <a href="#art" data-nav="art">
+                        Art
+                        &amp;
+                        Design
+                    </a>
+                    <a href="#about" data-nav="about">
+                        About
+                    </a>
+                    <a href="#contact" data-nav="contact">
+                        Contact
+                    </a>
                 </div>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <main id="main" class="container">
-        <section class="hero" aria-label="Intro">
-            <div>
-                <span class="tag">Available for work</span>
-                <h1>Hi, I’m <span class="accent">Matt Walsh</span>. I design and build <span class="accent">games and simulations</span>.</h1>
-                <p class="lead">Gameplay programmer with a focus on combat mechanics, NPC AI, and solo/small‑team production. Comfortable shipping prototypes and packages to full builds, creating digital assets, writing clean C#, and problem solving.</p>
-                <div style="display:flex; gap:10px; margin-top:12px">
-                    <a class="btn primary" href="#projects">See projects</a>
-                    <a class="btn" href="#contact">Contact</a>
+        <main id="main" class="wrap" tabindex="-1">
+
+            <!-- HOME: edit short project descriptions here. Each card opens a full project view below. -->
+
+            <section data-page="games" aria-labelledby="home-title">
+                <div class="hero">
+                    <span class="eyebrow">
+                        Game developer · Programmer · Digital artist
+                    </span>
+                    <h1 id="home-title">
+                        I design and build
+                        <br>
+                        <span class="accent">
+                            games and simulations.
+                        </span>
+                    </h1>
+                    <p class="lead">
+                        Gameplay programming, NPC AI, and visual assets. Explore my game projects
+                        and the creative work behind them.
+                    </p>
                 </div>
-            </div>
-            <div class="art" role="img" aria-label="Stylized game montage placeholder"></div>
-        </section>
+                <div class="section-head">
+                    <h2>
+                        Game Projects
+                    </h2>
+                    <small>
+                        Selected work
+                    </small>
+                </div>
+                <div class="grid">
 
-        <section id="about" aria-label="About Me">
-            <div class="section-head">
-                <h2>About Me</h2>
-            </div>
+                    <article class="card game-card">
+                        <a
+                            class="card-image"
+                            href="#cattaclipse"
+                            aria-label="View Cattaclipse project"
+                        >
+                            <img
+                                src="https://img.itch.zone/aW1nLzI3MDU5NzE1LnBuZw%3D%3D/original/jxo5qa.png"
+                                alt="Cattaclipse title artwork"
+                            >
+                        </a>
+                        <div class="card-copy">
+                            <span class="tools">
+                                Featured · Unity / C#
+                            </span>
+                            <h3>
+                                Cattaclipse
+                            </h3>
+                            <p>
+                                Interface programming, technical art, audio, and gameplay
+                                integration with Moonlight Team.
+                            </p>
+                            <a class="button primary" href="#cattaclipse">
+                                View Project
+                                <span aria-hidden="true">
+                                    →
+                                </span>
+                            </a>
+                        </div>
+                    </article>
 
-            <div class="about-intro">
-                <p>
-                    I’m a game developer and the owner of
-                    <strong>GW Contracting, LLC</strong>. I enjoy building
-                    combat mechanics, NPC behaviors, and games that feel
-                    responsive and rewarding to play.
-                </p>
-                <p>
-                    My background spans military service, public safety,
-                    and IT. I bring that experience into my approach to
-                    teamwork, problem solving, and game development.
-                </p>
-            </div>
+                    <article class="card game-card">
+                        <a
+                            class="card-image"
+                            href="#knight-dash"
+                            aria-label="View Knight Dash project"
+                        >
+                            <img
+                                src="https://img.itch.zone/aW1nLzIxMTE1NDY3LnBuZw==/original/r9Pmfk.png"
+                                alt="Knight Dash gameplay"
+                            >
+                        </a>
+                        <div class="card-copy">
+                            <span class="tools">
+                                Unity / C#
+                            </span>
+                            <h3>
+                                Knight Dash
+                            </h3>
+                            <p>
+                                A fast dash-runner built around forced movement, obstacle dodging,
+                                and stamina management.
+                            </p>
+                            <a class="button" href="#knight-dash">
+                                View Project
+                                <span aria-hidden="true">
+                                    →
+                                </span>
+                            </a>
+                        </div>
+                    </article>
 
-            <div class="about-layout">
-
-                <!-- Education -->
-                <div class="card about-panel">
-                    <h3>Education</h3>
-
-                    <div class="education-item">
-                        <span class="education-status">Currently attending • Junior</span>
-                        <h4>BA in Game Design — Game Art Emphasis</h4>
-                        <p>Lindenwood University</p>
+                    <article class="card game-card">
+                        <a
+                            class="card-image"
+                            href="#box-man"
+                            aria-label="View Box Man Boss Fight project"
+                        >
+                            <img
+                                src="https://i.ytimg.com/vi/mWQjhTp76Kc/hqdefault.jpg"
+                                alt="Box Man Boss Fight video thumbnail"
+                            >
+                        </a>
+                        <div class="card-copy">
+                            <span class="tools">
+                                Unity / C# / Boss AI
+                            </span>
+                            <h3>
+                                Box Man Boss Fight
+                            </h3>
+                            <p>
+                                A three-phase boss encounter with readable telegraphs, escalating
+                                attacks, and animation-driven hit windows.
+                            </p>
+                            <a class="button" href="#box-man">
+                                View Project
+                                <span aria-hidden="true">
+                                    →
+                                </span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+                <div class="card callout">
+                    <div>
+                        <span class="eyebrow">
+                            Beyond the gameplay
+                        </span>
+                        <h3>
+                            Art
+                            &amp;
+                            Design
+                        </h3>
                         <p>
-                            Working toward my bachelor’s degree, with plans
-                            to pursue a master’s degree in Game Design.
+                            Photo editing, digital artwork, and visual exploration.
                         </p>
                     </div>
-
-                    <div class="education-item">
-                        <h4>
-                            AAS in Game Development–Programming
-                        </h4>
-                        <p>Lone Star College</p>
-                        <p><em>Summa Cum Laude</em></p>
-                    </div>
-
-                    <div class="education-item">
-                        <h4>Certificate in Game Development</h4>
-                        <p>Lone Star College</p>
-                        <p><em>With Distinction</em></p>
-                    </div>
+                    <a class="button primary" href="#art">
+                        Explore Art
+                        &amp;
+                        Design
+                        <span aria-hidden="true">
+                            →
+                        </span>
+                    </a>
                 </div>
+            </section>
 
-                <!-- Development -->
-                <div class="card about-panel">
-                    <h3>Development Highlights</h3>
+            <!-- ART: put your JPG exports in an img folder beside this HTML file. -->
 
-                    <ul class="about-list">
-                        <li>
-                            <strong>Gameplay programming:</strong>
-                            Combat mechanics, player systems, and
-                            responsive controls using Unity and C#.
-                        </li>
-                        <li>
-                            <strong>3D &amp; digital asset creation:</strong>
-                            Creating models, textures, UI elements, and other visual
-                            assets for games and interactive projects.
-                        </li>
-                        <li>
-                            <strong>NPC &amp; boss AI:</strong>
-                            Patrols, perception, combat logic, and
-                            phase-based boss encounters.
-                        </li>
-                        <li>
-                            <strong>UI &amp; integration:</strong>
-                            Menus, camera systems, technical art,
-                            and audio integration.
-                        </li>
-                        <li>
-                            <strong>Prototyping &amp; production:</strong>
-                            Iterating on player feedback and bringing
-                            team projects together into playable builds.
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Prior careers -->
-                <div class="card about-panel">
-                    <h3>Background &amp; Service</h3>
-
-                    <p>
-                        Before moving into IT and game development,
-                        I served in the U.S. Army National Guard and
-                        worked in law enforcement, corrections,
-                        emergency medical services, and private security.
-                    </p>
-
-                    <p>
-                        My experience includes serving as a patrol
-                        sergeant, facility first sergeant, training
-                        officer, private military contractor, and 
-                        remote-site managing medic.
-                    </p>
-
-                    <p>
-                        Those roles shaped my approach to leadership,
-                        communication, and solving problems under pressure.
-                        They also inform my interest in believable
-                        tactical mechanics and simulations.
+            <section data-page="art" hidden aria-labelledby="art-title">
+                <div class="hero">
+                    <span class="eyebrow">
+                        Photo editing · Digital artwork · Visual design
+                    </span>
+                    <h1 id="art-title">
+                        Art
+                        &amp;
+                        Design
+                        <br>
+                        <span class="accent">
+                            Portfolio
+                        </span>
+                    </h1>
+                    <p class="lead">
+                        A collection of my photo edits and digital artwork, with a look at the
+                        process behind each piece.
                     </p>
                 </div>
 
-                <!-- Selected awards -->
-                <div class="card about-panel">
-                    <h3>Awards &amp; Commendations</h3>
+                <article class="card art-project">
+                    <span class="eyebrow">
+                        Photo enhancement
+                    </span>
+                    <h2>
+                        Mountain Range — Salt Lake City
+                    </h2>
+                    <p class="muted">
+                        I took this photo in Salt Lake City, Utah, while walking to a gas station. I
+                        used my iPhone 17. My goal was to bring more life and focus to the mountain
+                        range.
+                    </p>
+                    <!-- Single image containing the original and edited comparison -->
+                    <figure style="margin: 24px 0;">
 
-                    <div class="award-item">
-                        <h4>Award for Valor</h4>
-                        <p>Watford City Police Department</p>
+                        <div style="display: flex;
+                justify-content: space-around;
+                margin-bottom: 10px;
+                color: var(--muted);">
+                            <strong>Original</strong>
+                            <strong>Edited</strong>
+                        </div>
+
+                        <a href="img/SLC_Roadside_Mountain_Comparison.png"
+                           target="_blank"
+                           rel="noopener">
+
+                            <img src="img/SLC_Roadside_Mountain_Comparison.png"
+                                 alt="Salt Lake City mountains: original left, edited right"
+                                 style="display: block;
+                   width: 100%;
+                   height: auto;
+                   border-radius: 12px;
+                   border: 1px solid var(--line);">
+
+                        </a>
+
+                        <figcaption style="text-align: center;
+                       margin-top: 10px;
+                       color: var(--muted);">
+                            Original left · Edited right · Click to view full size
+                        </figcaption>
+
+                    </figure>
+                    <h3>
+                        My approach
+                    </h3>
+                    <p class="muted">
+                        I adjusted vibrance, exposure, and color balance to bring out the mountains.
+                        Clarity and dehaze adjustments helped separate the mountain range from the
+                        sky and reduce the appearance of atmospheric haze.
+                    </p>
+                    <div class="chips">
+                        <span class="chip">
+                            Adobe Photoshop
+                        </span>
+                        <span class="chip">
+                            Vibrance
+                        </span>
+                        <span class="chip">
+                            Exposure
+                        </span>
+                        <span class="chip">
+                            Color balance
+                        </span>
+                        <span class="chip">
+                            Clarity
+                            &amp;
+                            dehaze
+                        </span>
                     </div>
+                </article>
 
-                    <div class="award-item">
-                        <h4>Life Saving Award</h4>
-                        <p>Watford City Police Department</p>
-                    </div>
+                <!-- ADD MORE ART: duplicate the article above, then change its title, text, and image paths. -->
+                <a class="button" href="#games">
+                    ← Back to Game Projects
+                </a>
+            </section>
 
-                    <div class="award-item">
-                        <h4>Letter of Commendation</h4>
-                        <p>U.S. Senator John Hoeven</p>
-                    </div>
+            <!-- FULL PROJECT: CATTACLIPSE -->
 
-                    <div class="award-item">
-                        <h4>Certificate and Letter of Commendation</h4>
+            <section data-page="cattaclipse" hidden aria-labelledby="cattaclipse-title">
+                <a class="back" href="#games">
+                    ← Back to Game Projects
+                </a>
+                <div class="hero detail-hero">
+                    <span class="eyebrow">
+                        Moonlight Team · Windows / Linux
+                    </span>
+                    <h1 id="cattaclipse-title">
+                        Cattaclipse
+                    </h1>
+                    <p class="lead">
+                        Bringing interface programming, technical art, audio, and gameplay
+                        integration together into playable builds.
+                    </p>
+                </div>
+                <div class="detail-media">
+                    <img
+                        src="https://img.itch.zone/aW1nLzI3MDU5NzE1LnBuZw%3D%3D/original/jxo5qa.png"
+                        alt="Cattaclipse title artwork"
+                    >
+                </div>
+                <div class="detail-grid">
+
+                    <article class="card detail-copy">
+                        <h2>
+                            My Contributions
+                        </h2>
                         <p>
-                            U.S. Indian Police Academy /
-                            Bureau of Indian Affairs
+                            I worked across interface programming, technical art, audio, and
+                            gameplay integration to help bring the team's work together into
+                            playable builds.
                         </p>
-                    </div>
+                        <h3>
+                            Programming
+                            &amp;
+                            Interface
+                        </h3>
+                        <ul>
+                            <li>
+                                UI programming and menu systems.
+                            </li>
+                            <li>
+                                Camera systems and gameplay integration.
+                            </li>
+                        </ul>
+                        <h3>
+                            Technical Art
+                            &amp;
+                            Audio
+                        </h3>
+                        <ul>
+                            <li>
+                                UI and cut-scene implementation.
+                            </li>
+                            <li>
+                                Audio engineering and integration.
+                            </li>
+                        </ul>
+                        <h3>
+                            Production
+                        </h3>
+                        <p>
+                            Gameplay integration, builds, and publishing.
+                        </p>
+
+                        <!-- Add development screenshots, process notes, and additional contributions here. -->
+                    </article>
+                    <aside class="card sidebar" aria-label="Cattaclipse project information">
+                        <dl>
+                            <dt>
+                                Engine
+                                &amp;
+                                Language
+                            </dt>
+                            <dd>
+                                Unity · C#
+                            </dd>
+                            <dt>
+                                Team
+                            </dt>
+                            <dd>
+                                Moonlight Team
+                            </dd>
+                            <dt>
+                                Platforms
+                            </dt>
+                            <dd>
+                                Windows
+                                &amp;
+                                Linux
+                            </dd>
+                            <dt>
+                                Focus
+                            </dt>
+                            <dd>
+                                UI, cameras, technical art, audio, integration
+                            </dd>
+                        </dl>
+                        <div class="actions">
+                            <a
+                                class="button primary"
+                                href="https://bigdaddystinger.itch.io/cattaclipse"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Download on itch.io ↗
+                            </a>
+                        </div>
+                    </aside>
                 </div>
-            </div>
+            </section>
 
-            <div class="stack about-skills" aria-label="Skills">
-                <span class="chip">Unity &amp; C#</span>
-                <span class="chip">Adobe &amp; Gimp</span>
-                <span class="chip">Unreal &amp; C++</span>
-                <span class="chip">Game Mechanics</span>
-                <span class="chip">Blender &amp; Maya</span>
-                <span class="chip">AI &amp; Story Development</span>
-                <span class="chip">UI &amp; Camera Systems</span>
-                <span class="chip">GitHub &amp; itch.io</span>
-                <span class="chip">Optimization &amp; Refactoring</span>
-            </div>
-        </section>
+            <!-- FULL PROJECT: KNIGHT DASH -->
 
-        <section id="projects" aria-label="Projects">
-            <div class="section-head">
-                <h2>Projects</h2>
-                <p class="lead">Each project links to a repository and a playable or video. Write‑ups include tools used, challenges, and what I learned.</p>
-            </div>
-
-            <!-- Featured Project: Cattaclipse -->
-            <article class="project card" aria-labelledby="cattaclipse-title">
-                <div class="media">
-                    <span class="badge">Unity • C# • Windows / Linux</span>
-                    <img src="https://img.itch.zone/aW1nLzI3MDU5NzE1LnBuZw%3D%3D/original/jxo5qa.png"
-                         alt="Cattaclipse title artwork"
-                         style="object-fit:contain" />
-                </div>
-
-                <div class="proj-body">
-                    <h3 id="cattaclipse-title" class="proj-title">Cattaclipse</h3>
-
-                    <p class="meta">
-                        Moonlight Team • A downloadable game for Windows and Linux.
+            <section data-page="knight-dash" hidden aria-labelledby="knight-title">
+                <a class="back" href="#games">
+                    ← Back to Game Projects
+                </a>
+                <div class="hero detail-hero">
+                    <span class="eyebrow">
+                        Unity · C# · Dash-runner
+                    </span>
+                    <h1 id="knight-title">
+                        Knight Dash
+                    </h1>
+                    <p class="lead">
+                        Forced forward movement, obstacle dodging, stamina management, and
+                        bullet-hell elements.
                     </p>
+                </div>
+                <div class="detail-media">
+                    <img
+                        src="https://img.itch.zone/aW1nLzIxMTE1NDY3LnBuZw==/original/r9Pmfk.png"
+                        alt="Knight Dash gameplay screenshot"
+                    >
+                </div>
+                <div class="detail-grid">
 
-                    <p>
-                        I worked across interface programming, technical art, audio,
-                        and gameplay integration to help bring the team's work
-                        together into playable builds.
+                    <article class="card detail-copy">
+                        <h2>
+                            Development Process
+                        </h2>
+                        <p>
+                            I built a tight dash loop and stamina system to push risk and reward
+                            while the knight automatically advances. Level lanes and rock obstacles
+                            create readable micro-puzzles. Stamina prevents repeated dash spamming,
+                            making timing matter.
+                        </p>
+                        <p>
+                            Playtesting focused on hitbox fairness and dash responsiveness under
+                            constant motion.
+                        </p>
+                        <h3>
+                            The Challenge
+                        </h3>
+                        <p>
+                            Balancing stamina drain against the feel of dashing during forced
+                            movement.
+                        </p>
+                        <h3>
+                            The Solution
+                        </h3>
+                        <p>
+                            I tuned dash invulnerability frames and recovery, adjusted obstacle
+                            spacing, and added cooldown buffers for consistency.
+                        </p>
+                        <h3>
+                            What I Learned
+                        </h3>
+                        <p>
+                            Clear telegraphing and generous input buffers do more for flow in an
+                            auto-scroller than raw difficulty.
+                        </p>
+                    </article>
+                    <aside class="card sidebar" aria-label="Knight Dash project information">
+                        <dl>
+                            <dt>
+                                Engine
+                                &amp;
+                                Language
+                            </dt>
+                            <dd>
+                                Unity · C#
+                            </dd>
+                            <dt>
+                                Tools
+                            </dt>
+                            <dd>
+                                Cinemachine · Git / GitHub · itch.io
+                            </dd>
+                            <dt>
+                                Focus
+                            </dt>
+                            <dd>
+                                Movement, stamina, obstacle timing, playtesting
+                            </dd>
+                        </dl>
+                        <div class="actions">
+                            <a
+                                class="button primary"
+                                href="https://bigdaddystinger.itch.io/team4final"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Play on itch.io ↗
+                            </a>
+                            <a
+                                class="button"
+                                href="https://github.com/BigDaddyStinger/GAME1343_Team4_FinalProject"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                View GitHub Repository ↗
+                            </a>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- FULL PROJECT: BOX MAN -->
+
+            <section data-page="box-man" hidden aria-labelledby="box-title">
+                <a class="back" href="#games">
+                    ← Back to Game Projects
+                </a>
+                <div class="hero detail-hero">
+                    <span class="eyebrow">
+                        Unity · C# · Boss AI
+                    </span>
+                    <h1 id="box-title">
+                        Box Man Boss Fight
+                    </h1>
+                    <p class="lead">
+                        A C# state machine with three escalating phases, readable telegraphs, and
+                        pattern mixing.
                     </p>
-
-                    <ul style="margin:0 0 6px 16px">
-                        <li><strong>Programming:</strong> UI, menu systems, and camera systems.</li>
-                        <li><strong>Technical art:</strong> UI and cut-scene implementation.</li>
-                        <li><strong>Audio:</strong> Audio engineering and integration.</li>
-                        <li><strong>Production:</strong> Gameplay integration, builds, and publishing.</li>
-                        <li><strong>Tools:</strong> Unity and C#.</li>
-                    </ul>
-
-                    <div class="links">
-                        <a class="btn primary"
-                           href="https://bigdaddystinger.itch.io/cattaclipse"
-                           target="_blank"
-                           rel="noopener">Download on itch.io</a>
-
-                        <a class="btn"
-                           href="https://bigdaddystinger.itch.io/"
-                           target="_blank"
-                           rel="noopener">My itch.io profile</a>
-                    </div>
                 </div>
-            </article>
-
-            <!-- Project 1 -->
-            <article class="project card" aria-labelledby="p1-title">
-                <div class="media">
-                    <span class="badge">Unity • C#</span>
-                    <img src="https://img.itch.zone/aW1nLzIxMTE1NDY3LnBuZw==/original/r9Pmfk.png" alt="Screenshot of Knight Dash" />
-                </div>
-                <div class="proj-body">
-                    <h3 id="p1-title" class="proj-title">Knight Dash</h3>
-                    <p class="meta">Fast dash-runner with forced forward movement, obstacle dodging, and stamina management (plus bullet-hell elements).</p>
-                    <p>
-                        <strong>Process:</strong> Built a tight dash loop and stamina system to push risk/reward while the knight auto-advances.
-                        Level lanes and rock obstacles create readable “micro-puzzles”; stamina gates spam-dashing, so timing matters.
-                        Playtesting focused on hitbox fairness and dash responsiveness under constant motion.
-                    </p>
-                    <ul style="margin:0 0 6px 16px">
-                        <li><strong>Tools:</strong> Unity (C#), Cinemachine, Git/GitHub, and Itch.IO.</li>
-                        <li><strong>Challenge:</strong> Balancing stamina drain vs. dash feel during forced movement.</li>
-                        <li><strong>Fix:</strong> Tuned dash i-frames & recovery, adjusted obstacle spacing, and added cooldown buffers for consistency.</li>
-                        <li><strong>Learned:</strong> Clear telegraphing + generous buffers beat raw difficulty for “flow” in auto-scrollers.</li>
-                    </ul>
-                    <div class="links">
-                        <a class="btn" href="https://bigdaddystinger.itch.io/team4final" target="_blank" rel="noopener">Play on itch.io</a>
-                        <a class="btn" href="https://github.com/BigDaddyStinger/GAME1343_Team4_FinalProject" target="_blank" rel="noopener">GitHub Repo</a>
-                        <!--  <a class="btn" href="#" target="_blank" rel="noopener">Watch on YouTube (add link)</a>  -->
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project card" aria-labelledby="p2-title">
-                <div class="media">
-                    <span class="badge">Unity • C# • Boss AI</span>
-                    <iframe src="https://www.youtube.com/embed/mWQjhTp76Kc"
-                            title="Box Man Boss Fight Preview"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
+                <div class="detail-media video">
+                    <iframe
+                        data-video="https://www.youtube.com/embed/mWQjhTp76Kc"
+                        title="Box Man Boss Fight gameplay preview"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    >
                     </iframe>
                 </div>
-                <div class="proj-body">
-                    <h3 id="p2-title" class="proj-title">Box Man Boss Fight</h3>
-                    <p class="meta">C#-driven state machine with 3 escalating phases, readable telegraphs, and pattern mixing.</p>
-                    <p>
-                        <strong>Process:</strong>Implemented a phase-based boss using a script based state machine and
-                        health thresholds to trigger behavior swaps. Phase 1 teaches the player with simple, punishable moves.
-                        Phase 2 layers combos and an arena-wide projectile pattern. Phase 3 enrages with speed scaling and a
-                        ground-slam to break turtling. Animation Events gate hit windows. Cooldowns & anticipation frames keep it patterned.
-                    </p>
-                    <ul style="margin:0 0 6px 16px">
-                        <li><strong>Phase 1:</strong> <em>Staple Throw</em> (single), <em>Kick</em>, <em>Normal Swing</em>.</li>
-                        <li><strong>Phase 2:</strong> Adds <em>Swing Combo 1</em>, <em>Swing Combo 2</em>, <em>360 Swing</em>, and a “hailstorm” multi-staple barrage.</li>
-                        <li><strong>Phase 3 (Enraged):</strong> Adds <em>Slam</em>; global boss speed ×<strong>1.25</strong>; tighter timings and shorter recovery.</li>
-                    </ul>
-                    <ul style="margin:0 0 6px 16px">
-                        <li><strong>Tools:</strong> Unity 6, C#, Animator State Machine + parameters, Animation Events, Scriptable config for phase thresholds, Cinemachine.</li>
-                        <li><strong>Challenge:</strong>  Unintended transition loops & mistimed hitboxes during combos.</li>
-                        <li><strong>Fix:</strong> Explicit exit conditions per state, normalized transition durations, rooted windups, and event-driven hitbox toggles.</li>
-                        <li><strong>Learned:</strong> Telegraphs + recovery windows matter more than raw damage; small speed buffs (e.g., 1.25×) dramatically change pressure.</li>
-                    </ul>
-                    <div class="links">
-                        <!--  <a class="btn" href="#" target="_blank" rel="noopener">Play on itch.io (add link)</a> -->
-                        <a class="btn" href="https://github.com/BigDaddyStinger/Boss-Rush_MW" target="_blank" rel="noopener">GitHub Repo</a>
-                        <a class="btn" href="https://youtu.be/mWQjhTp76Kc" target="_blank" rel="noopener">Watch on YouTube</a>
-                    </div>
-                </div>
-            </article>
+                <p class="muted">
+                    Prefer a separate player?
+                    <a href="https://youtu.be/mWQjhTp76Kc" target="_blank" rel="noopener">
+                        Watch the gameplay on YouTube ↗
+                    </a>
+                </p>
+                <div class="detail-grid">
 
-        </section>
-
-        <section id="contact" aria-label="Contact">
-            <div class="section-head">
-                <h2>Contact</h2>
-            </div>
-
-            <div class="card">
-                <h3 style="margin-top:0">Matt Walsh • GW Contracting, LLC</h3>
-
-                <div class="contact-grid">
-                    <div>
+                    <article class="card detail-copy">
+                        <h2>
+                            Development Process
+                        </h2>
                         <p>
-                            <strong>Email:</strong>
-                            <a href="mailto:mattwalsh5697@gmail.com">
-                                mattwalsh5697@gmail.com
+                            I implemented a phase-based boss using a script-based state machine and
+                            health thresholds to trigger behavior changes. Animation Events gate hit
+                            windows, while cooldowns and anticipation frames keep the attacks
+                            patterned.
+                        </p>
+                        <h3>
+                            Three Escalating Phases
+                        </h3>
+                        <ul>
+                            <li>
+                                <strong>
+                                    Phase 1:
+                                </strong>
+                                Staple Throw, Kick, and Normal Swing introduce simple, punishable
+                                moves.
+                            </li>
+                            <li>
+                                <strong>
+                                    Phase 2:
+                                </strong>
+                                Swing Combo 1, Swing Combo 2, 360 Swing, and a hailstorm
+                                multi-staple barrage increase pressure.
+                            </li>
+                            <li>
+                                <strong>
+                                    Phase 3 — Enraged:
+                                </strong>
+                                Adds Slam, increases global boss speed to 1.25×, and tightens
+                                timings and recovery windows.
+                            </li>
+                        </ul>
+                        <h3>
+                            The Challenge
+                        </h3>
+                        <p>
+                            Unintended transition loops and mistimed hitboxes during combos.
+                        </p>
+                        <h3>
+                            The Solution
+                        </h3>
+                        <p>
+                            Explicit exit conditions per state, normalized transition durations,
+                            rooted windups, and event-driven hitbox toggles.
+                        </p>
+                        <h3>
+                            What I Learned
+                        </h3>
+                        <p>
+                            Telegraphs and recovery windows matter more than raw damage. Even a
+                            small speed increase, such as 1.25×, dramatically changes the pressure
+                            of an encounter.
+                        </p>
+                    </article>
+                    <aside class="card sidebar" aria-label="Box Man project information">
+                        <dl>
+                            <dt>
+                                Engine
+                                &amp;
+                                Language
+                            </dt>
+                            <dd>
+                                Unity 6 · C#
+                            </dd>
+                            <dt>
+                                Tools
+                            </dt>
+                            <dd>
+                                Animator State Machine, Animation Events, Scriptable configuration,
+                                Cinemachine
+                            </dd>
+                            <dt>
+                                Focus
+                            </dt>
+                            <dd>
+                                Boss AI, phase transitions, animation timing, combat readability
+                            </dd>
+                        </dl>
+                        <div class="actions">
+                            <a
+                                class="button primary"
+                                href="https://github.com/BigDaddyStinger/Boss-Rush_MW"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                View GitHub Repository ↗
                             </a>
-                        </p>
+                            <a
+                                class="button"
+                                href="https://youtu.be/mWQjhTp76Kc"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Watch on YouTube ↗
+                            </a>
+                        </div>
+                    </aside>
+                </div>
+            </section>
 
-                        <p>
-                            <strong>Phone:</strong>
-                            <a href="tel:+19369003533">(936) 900-3533</a>
-                        </p>
-                    </div>
+            <!-- ABOUT: education, background, skills, and selected awards. -->
 
-                    <div>
-                        <p>
-                            <strong>GitHub:</strong>
-                            <a href="https://github.com/BigDaddyStinger"
-                               target="_blank"
-                               rel="noopener">BigDaddyStinger</a>
-                        </p>
+            <section data-page="about" hidden aria-labelledby="about-title">
+                <div class="hero">
+                    <span class="eyebrow">
+                        Developer · Veteran · Business owner
+                    </span>
+                    <h1 id="about-title">
+                        About Me
+                    </h1>
+                    <p class="lead">
+                        I’m a game developer and the owner of GW Contracting, LLC. I enjoy building
+                        combat mechanics, NPC behaviors, and games that feel responsive and
+                        rewarding to play.
+                    </p>
+                    <p class="muted">
+                        My background spans military service, public safety, and IT. I bring that
+                        experience into my approach to teamwork, problem solving, and game
+                        development.
+                    </p>
+                </div>
+                <div class="about-grid">
 
+                    <article class="card about-panel">
+                        <h3>
+                            Education
+                        </h3>
+                        <div class="entry">
+                            <span class="eyebrow">
+                                Currently attending · Junior
+                            </span>
+                            <h4>
+                                BA in Game Design — Game Art Emphasis
+                            </h4>
+                            <p>
+                                Lindenwood University
+                            </p>
+                            <p>
+                                Working toward my bachelor’s degree, with plans to pursue a master’s
+                                degree in Game Design.
+                            </p>
+                        </div>
+                        <div class="entry">
+                            <h4>
+                                AAS in Game Development–Programming
+                            </h4>
+                            <p>
+                                Lone Star College ·
+                                <em>
+                                    Summa Cum Laude
+                                </em>
+                            </p>
+                        </div>
+                        <div class="entry">
+                            <h4>
+                                Certificate in Game Development
+                            </h4>
+                            <p>
+                                Lone Star College ·
+                                <em>
+                                    With Distinction
+                                </em>
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card about-panel">
+                        <h3>
+                            Development Highlights
+                        </h3>
+                        <ul>
+                            <li>
+                                <strong>
+                                    Gameplay programming:
+                                </strong>
+                                Combat mechanics, player systems, and responsive controls using
+                                Unity and C#.
+                            </li>
+                            <li>
+                                <strong>
+                                    NPC
+                                    &amp;
+                                    boss AI:
+                                </strong>
+                                Patrols, perception, combat logic, and phase-based encounters.
+                            </li>
+                            <li>
+                                <strong>
+                                    UI
+                                    &amp;
+                                    integration:
+                                </strong>
+                                Menus, cameras, technical art, and audio integration.
+                            </li>
+                            <li>
+                                <strong>
+                                    3D
+                                    &amp;
+                                    digital asset creation:
+                                </strong>
+                                Models, textures, UI elements, and visual assets for games and
+                                interactive projects.
+                            </li>
+                            <li>
+                                <strong>
+                                    Prototyping
+                                    &amp;
+                                    production:
+                                </strong>
+                                Iteration and playable builds.
+                            </li>
+                        </ul>
+                        <a class="button" href="#art">
+                            View Art
+                            &amp;
+                            Design →
+                        </a>
+                    </article>
+
+                    <article class="card about-panel">
+                        <h3>
+                            Background
+                            &amp;
+                            Service
+                        </h3>
                         <p>
-                            <strong>itch.io:</strong>
-                            <a href="https://bigdaddystinger.itch.io/"
-                               target="_blank"
-                               rel="noopener">BigDaddyStinger</a>
+                            Before moving into IT and game development, I served in the U.S. Army
+                            National Guard and worked in law enforcement, corrections, emergency
+                            medical services, and private security.
                         </p>
+                        <p>
+                            My experience includes serving as a patrol sergeant, facility first
+                            sergeant, training officer, and remote-site EMT.
+                        </p>
+                        <p class="muted">
+                            Those roles shaped my approach to leadership, communication, and solving
+                            problems under pressure. They also inform my interest in believable
+                            tactical mechanics and simulations.
+                        </p>
+                    </article>
+
+                    <article class="card about-panel">
+                        <h3>
+                            Awards
+                            &amp;
+                            Commendations
+                        </h3>
+                        <div class="entry">
+                            <h4>
+                                Award for Valor
+                            </h4>
+                            <p>
+                                Watford City Police Department
+                            </p>
+                            <p>
+                                Response to the July 10, 2018 EF-2 tornado.
+                            </p>
+                        </div>
+                        <div class="entry">
+                            <h4>
+                                Life Saving Award
+                            </h4>
+                            <p>
+                                Watford City Police Department
+                            </p>
+                            <p>
+                                Helping save a choking child.
+                            </p>
+                        </div>
+                        <div class="entry">
+                            <h4>
+                                Letter of Commendation
+                            </h4>
+                            <p>
+                                U.S. Senator John Hoeven
+                            </p>
+                            <p>
+                                Tornado response and protection of life and property.
+                            </p>
+                        </div>
+                        <div class="entry">
+                            <h4>
+                                Certificate and Letter of Commendation
+                            </h4>
+                            <p>
+                                U.S. Indian Police Academy / Bureau of Indian Affairs
+                            </p>
+                            <p>
+                                Recognition as a Basic Correctional Officer Training platoon leader.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+                <div class="chips">
+                    <span class="chip">
+                        Unity / C#
+                    </span>
+                    <span class="chip">
+                        NPC AI
+                    </span>
+                    <span class="chip">
+                        Unreal / C++
+                    </span>
+                    <span class="chip">
+                        Game Mechanics
+                    </span>
+                    <span class="chip">
+                        3D
+                        &amp;
+                        Digital Assets
+                    </span>
+                    <span class="chip">
+                        UI
+                        &amp;
+                        Camera Systems
+                    </span>
+                    <span class="chip">
+                        GitHub / itch.io
+                    </span>
+                </div>
+            </section>
+
+            <!-- CONTACT: no form or third-party form service. -->
+
+            <section data-page="contact" hidden aria-labelledby="contact-title">
+                <div class="hero">
+                    <span class="eyebrow">
+                        Let’s connect
+                    </span>
+                    <h1 id="contact-title">
+                        Contact
+                    </h1>
+                </div>
+                <div class="card contact-card">
+                    <h3>
+                        Matt Walsh · GW Contracting, LLC
+                    </h3>
+                    <div class="contact-grid">
+                        <div>
+                            <p>
+                                <strong>
+                                    Email
+                                </strong>
+                                <a href="mailto:mattwalsh5697@gmail.com">
+                                    mattwalsh5697@gmail.com
+                                </a>
+                            </p>
+                            <p>
+                                <strong>
+                                    Phone
+                                </strong>
+                                <a href="tel:+19369003533">
+                                    (936) 900-3533
+                                </a>
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <strong>
+                                    GitHub
+                                </strong>
+                                <a
+                                    href="https://github.com/BigDaddyStinger"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    BigDaddyStinger ↗
+                                </a>
+                            </p>
+                            <p>
+                                <strong>
+                                    itch.io
+                                </strong>
+                                <a
+                                    href="https://bigdaddystinger.itch.io/"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    BigDaddyStinger ↗
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+            <noscript>
+                <p>
+                    Please enable JavaScript to switch between portfolio pages. You can also visit
+                    <a href="https://bigdaddystinger.itch.io/">
+                        my itch.io profile
+                    </a>
+                    .
+                </p>
+            </noscript>
+        </main>
 
-    <footer>
-        <div class="container">
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
-                <span>© <span id="year"></span> Matt Walsh. Built with HTML/CSS.</span>
-                <div style="display:flex; gap:12px">
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
+        <footer>
+            <div class="wrap footer-row">
+                <span>
+                    ©
+                    <span id="year">
+                    </span>
+                    Matt Walsh · GW Contracting, LLC
+                </span>
+                <div>
+                    <a href="#games">
+                        Games
+                    </a>
+                    ·
+                    <a href="#art">
+                        Art
+                        &amp;
+                        Design
+                    </a>
+                    ·
+                    <a href="#contact">
+                        Contact
+                    </a>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-</body>
+        <script>
+            /* NAVIGATION: all page views live in this one file; browser Back/Forward also works. */
+            const pages = [...document.querySelectorAll('[data-page]')];
+            const pageNames = {
+                games: 'Game Projects',
+                art: 'Art & Design',
+                about: 'About',
+                contact: 'Contact',
+                cattaclipse: 'Cattaclipse',
+                'knight-dash': 'Knight Dash',
+                'box-man': 'Box Man Boss Fight'
+            };
+            function showPage(moveFocus = true) {
+              const requested = location.hash.slice(1) || 'games';
+              const current = Object.hasOwn(pageNames, requested) ? requested : 'games';
+              pages.forEach(page => { page.hidden = page.dataset.page !== current; });
+              const activeNav = ['cattaclipse','knight-dash','box-man'].includes(current) ? 'games' : current;
+              document.querySelectorAll('[data-nav]').forEach(link => {
+                if (link.dataset.nav === activeNav) link.setAttribute('aria-current','page');
+                else link.removeAttribute('aria-current');
+              });
+              document.title = pageNames[current] + ' | Matt Walsh';
+              // Only load the video when its page opens; stop playback when leaving.
+              document.querySelectorAll('[data-video]').forEach(frame => {
+                if (current === 'box-man') { if (!frame.hasAttribute('src')) frame.src = frame.dataset.video; }
+                else frame.removeAttribute('src');
+              });
+              if (moveFocus) { document.getElementById('main').focus({preventScroll:true}); window.scrollTo({top:0,behavior:'instant'}); }
+            }
+            window.addEventListener('hashchange', () => showPage());
+            showPage(false);
+            document.getElementById('year').textContent = new Date().getFullYear();
+            // Keep a clean placeholder if a local photo has not been added yet.
+            document.querySelectorAll('[data-optional-photo]').forEach(image => {
+              const hideMissing = () => { image.hidden = true; };
+              image.addEventListener('error', hideMissing);
+              if (image.complete && image.naturalWidth === 0) hideMissing();
+            });
+            // Graceful fallback for remote project artwork when offline.
+            document.querySelectorAll('.card-image img,.detail-media img').forEach(image => {
+              const fallback = () => {
+                if (image.hidden) return;
+                image.hidden = true;
+                const label = document.createElement('span');
+                label.className = image.closest('.card-image') ? 'missing' : 'empty-image-label';
+                label.textContent = image.alt;
+                image.parentElement.append(label);
+              };
+              image.addEventListener('error', fallback);
+              if (image.complete && image.naturalWidth === 0) fallback();
+            });
+        </script>
+    </body>
 </html>
